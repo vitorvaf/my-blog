@@ -16,6 +16,34 @@ a=3
 puts a
 ```
 
+```jsx
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+
+import * as S from "./styled"
+
+const Avatar = () => {
+  const { avatarImage } = useStaticQuery(
+    graphql`
+      query {
+        avatarImage: file(relativePath: { eq: "profile-photo.jpg" }) {
+          childImageSharp {
+            fixed(width: 60, height: 60) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+    `
+  )
+
+  return <S.AvatarWrapper fixed={avatarImage.childImageSharp.fixed} />
+}
+
+export default Avatar
+
+```
+
 ## Fusce a metus eu
 
 Pellentesque `sed` sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.
