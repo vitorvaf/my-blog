@@ -41,6 +41,7 @@ const BlogList = props => {
           )
         )}
       </S.ListWrapper>
+
       <Pagination
         isFirst={isFirst}
         isLast={isLast}

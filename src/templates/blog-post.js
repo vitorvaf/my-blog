@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import * as S from "../components/Post/styled"
 import RecommendedPosts from "../components/RecommendedPosts"
-import Comments from '../components/Comments'
+import Comments from "../components/Comments"
 
 const BlogPost = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -14,7 +14,11 @@ const BlogPost = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={post.frontmatter.title}></SEO>
+      <SEO
+        title={post.frontmatter.title}
+        PostDescription={post.frontmatter.description}
+        image={post.frontmatter.image}
+      ></SEO>
       <S.PostHeader>
         <S.PostDate>
           {post.frontmatter.date} • {post.timeToRead} min de leitura
@@ -25,8 +29,8 @@ const BlogPost = ({ data, pageContext }) => {
       <S.MainContent>
         <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
       </S.MainContent>
-      <RecommendedPosts next={ next } previous={ previous }/>
-      <Comments url={post.fields.slug} title={post.frontmatter.title}/>
+      <RecommendedPosts next={next} previous={previous} />
+      <Comments url={post.fields.slug} title={post.frontmatter.title} />
     </Layout>
   )
 }
@@ -41,6 +45,7 @@ export const query = graphql`
         title
         description
         date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
+        image
       }
       html
       timeToRead

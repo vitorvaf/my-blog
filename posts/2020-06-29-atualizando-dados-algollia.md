@@ -4,6 +4,7 @@ title: Atualizando dados Algollia
 description: Resolvendo o problema do inserção de novos campos e atualizando base no algollia.
 category: Algo
 background: "#7AAB13"
+image: "/assets/img/desert.jpg"
 
 ---
 
