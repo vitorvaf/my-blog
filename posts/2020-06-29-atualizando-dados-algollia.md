@@ -1,16 +1,15 @@
 ---
-date: 2020-06-29 07:54:23
 title: Atualizando dados Algollia
-description: Resolvendo o problema do inserção de novos campos e atualizando base no algollia.
+description: Resolvendo o problema do inserção de novos campos e atualizando
+  base no algollia.
+date: 2020-06-29T07:54:23.000Z
+image: /assets/img/desert.jpg
 category: Algo
 background: "#7AAB13"
-image: "/assets/img/desert.jpg"
-
 ---
-
 # Como atualizar o Algollia com novos campos.
 
-O problema apareceu quando tive a necessidade de atualizar os dados(campos)  de um index já criado e quando precisei atualizar a base com os dados novos ele não atualiza.
+O problema apareceu quando tive a necessidade de atualizar os dados(campos)  de um index já criado, quando precisei atualizar a base com os dados novos ele não atualiza.
 
 ```javascript
 a=3
@@ -42,7 +41,6 @@ const Avatar = () => {
 }
 
 export default Avatar
-
 ```
 
 ## Fusce a metus eu
@@ -50,7 +48,7 @@ export default Avatar
 Pellentesque `sed` sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.
 
 > Proin ornare ligula eu tellus tempus elementum. Aenean bibendum iaculis mi, nec blandit lacus interdum vitae. Vestibulum non nibh risus, a scelerisque purus. Ut vel arcu ac tortor adipiscing hendrerit vel sed massa. Fusce sem libero, lacinia vulputate interdum non, porttitor non quam. Aliquam sed felis ligula. Duis non nulla magna.
-Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo. Suspendisse egestas est ac dolor imperdiet pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor, erat sit amet venenatis luctus, augue libero ultrices quam, ut congue nisi risus eu purus. Cras semper consectetur elementum.
+> Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo. Suspendisse egestas est ac dolor imperdiet pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor, erat sit amet venenatis luctus, augue libero ultrices quam, ut congue nisi risus eu purus. Cras semper consectetur elementum.
 
 ### Cras semper consectetur elementum
 
@@ -62,11 +60,11 @@ Proin suscipit luctus orci placerat fringilla. Donec hendrerit laoreet risus ege
 
 Pellentesque sed sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.
 
-- Lorem
-- Ipsum
-- Dolor
-- Sit
-- amet
+* Lorem
+* Ipsum
+* Dolor
+* Sit
+* amet
 
 #### Sed enim mi
 
