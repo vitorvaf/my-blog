@@ -63,7 +63,20 @@ img {
 
 }
 
+
 body.dark {
+    --borders: #38444d;
+    --texts: #eeeeee;
+    --postColor: #fff;
+    --highlight: #4ecca3;
+    --mediumBackground: #393e46;
+    --background: #232931;
+    --white: #fff;
+    --black: #222;
+} 
+
+
+/* body.dark {
     --borders: #38444d;
     --texts: #8899a6;
     --postColor: #fff;
@@ -72,7 +85,7 @@ body.dark {
     --background: #16202c;
     --white: #fff;
     --black: #222;
-}
+}  */
 
 body.light{
     --borders: #dedede;

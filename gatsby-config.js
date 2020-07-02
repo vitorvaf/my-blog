@@ -10,7 +10,7 @@ module.exports = {
     description: `Desenvolvedor full stack especializado em tecnologias Web 
     e entusiasta de tecnologias mobile`,
     author: `@vitorvaf`,
-    siteUrl:`https://vitorabreu.com.br`
+    siteUrl:`https://vitorabreu.netlify.app/`
   },
   plugins: [
     `gatsby-plugin-transition-link`,
@@ -80,8 +80,8 @@ module.exports = {
         name: `Vitor Abreu`,
         short_name: `Vitor Abreu`,
         start_url: `/`,
-        background_color: `#16202c`,
-        theme_color: `#16202c`,
+        background_color: `#232931`,
+        theme_color: `#232931`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
