@@ -1,5 +1,5 @@
 ---
-title: Atualizando dados Algollia
+title: Atualizando dados Algolia
 description: Resolvendo o problema do inserção de novos campos e atualizando
   base no algollia.
 date: 2020-06-29T07:54:23.000Z
