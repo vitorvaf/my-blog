@@ -1,6 +1,6 @@
 ---
 title: Atualizando dados Algolia
-description: Resolvendo o problema do inserção de novos campos e atualizando
+description: Resolvendo o problema de inserção de novos campos e atualizando
   base no algollia.
 date: 2020-06-29T07:54:23.000Z
 image: /assets/img/desert.jpg
