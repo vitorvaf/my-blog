@@ -6,8 +6,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 export const MenuBarWrapper = styled.aside`
     border-top: 1px solid var(--borders);
-    bottom: 0;
-    flex-direction: row;
+    bottom: 0;    
     height: auto;
     padding: 0;
     position: fixed;
@@ -18,13 +17,9 @@ export const MenuBarWrapper = styled.aside`
     border-left: 1px solid var(--borders);
     border-top: 1px solid var(--borders);
     display: flex;
-    flex-direction: row;
-    height: auto;
-    justify-content: space-between;
-    padding: 0;
-    position: fixed;
-    right: 0;
-    width: 100%; 
+    flex-direction: row;    
+    justify-content: space-between;        
+    right: 0;    
     transition: background 0.5s;
     
   ${media.lessThan("large")`
