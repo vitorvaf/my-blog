@@ -58,7 +58,6 @@ Para automatizar o processo de ofuscação, o arquivo `.csproj` do projeto .NET 
 <Target Name="ObfuscateJavaScript" BeforeTargets="Build">
   <Exec Command="npm run obfuscate" />
 </Target>
-
 ```
 
 \
@@ -74,7 +73,6 @@ RUN apt-get install -y nodejs
 # Instalar dependências do Node.js especificadas no package.json
 COPY package.json ./
 RUN npm install
-
 ```
 
 \
@@ -91,35 +89,19 @@ A integração da obfuscação de código JavaScript em projetos .NET Core adici
 
    * [javascript-obfuscator no GitHub](https://github.com/javascript-obfuscator/javascript-obfuscator)
    * Esta é a fonte primária para entender as capacidades e opções de configuração da biblioteca `javascript-obfuscator`.
-2. **Documentação do Node.js:**
-
-   * [Node.js Documentation](https://nodejs.org/en/docs/)
-   * A documentação oficial do Node.js pode ajudar os leitores a entender como configurar e executar um ambiente Node.js.
-3. **Guia de Integração do MSBuild:**
+2. **Guia de Integração do MSBuild:**
 
    * [MSBuild Documentation](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild)
    * A documentação oficial do MSBuild da Microsoft oferece um guia detalhado sobre como criar e configurar tarefas de build personalizadas.
-4. **Docker e .NET Core:**
+3. **Docker e .NET Core:**
 
    * [Dockerize an ASP.NET Core application](https://docs.docker.com/samples/dotnetcore/)
    * Este guia da Docker fornece instruções sobre como containerizar uma aplicação .NET Core.
-5. **Artigos e Tutoriais de Ofuscação de Código:**
+4. **Artigos e Tutoriais de Ofuscação de Código:**
 
    * [A Beginner's Guide to Obfuscating JavaScript](https://www.sitepoint.com/javascript-obfuscation/)
    * Um guia introdutório para entender a ofuscação de JavaScript e por que ela é importante.
-6. **Discussões sobre Segurança de Código JavaScript:**
-
-   * [JavaScript Obfuscation: The Definitive Guide (2021)](https://blog.jscrambler.com/javascript-obfuscation-the-definitive-guide/)
-   * Um artigo detalhado que discute várias técnicas de ofuscação de JavaScript e suas implicações para a segurança.
-7. **Referências sobre o MSBuild e Docker:**
+5. **Referências sobre o MSBuild e Docker:**
 
    * [Using MSBuild and Docker Together](https://www.stevejgordon.co.uk/using-docker-with-msbuild-projects)
    * Um artigo que explora como usar o MSBuild e o Docker juntos, o que pode ser relevante para a parte do Dockerfile do seu artigo.
-8. **Fóruns e Comunidades:**
-
-   * [Stack Overflow](https://stackoverflow.com/)
-   * Uma comunidade onde os desenvolvedores podem fazer perguntas e encontrar respostas sobre ofuscação de código e outras práticas de desenvolvimento.
-9. **Livros e Publicações:**
-
-   * "Pro .NET Obfuscation" (nome fictício)
-   * Embora não exista um livro com esse título, você pode procurar por livros que abordem a segurança de aplicações .NET e a ofuscação de código como um tópico.
