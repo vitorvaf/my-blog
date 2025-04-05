@@ -1,5 +1,5 @@
 ---
-title: Integrando Obfuscação de Código JavaScript em Projetos .NET Core
+title: Ofuscação de Código JavaScript em Projetos .NET Core
 description: Este artigo explora a integração eficaz da ofuscação de código
   JavaScript em projetos .NET Core.
 date: 2023-11-07T08:44:51.000Z
@@ -9,7 +9,7 @@ background: "#637a91"
 ---
 **Introdução:**
 
-A obfuscação de código é uma prática essencial para proteger a propriedade intelectual e a segurança de aplicações web. Em projetos .NET Core, a inclusão de scripts JavaScript pode apresentar um vetor para engenharia reversa e exploração de vulnerabilidades. Este artigo explora uma abordagem robusta para integrar a obfuscação de código JavaScript em projetos .NET Core, utilizando a biblioteca `javascript-obfuscator` e automatizando o processo através do arquivo de projeto (.csproj) e do Dockerfile.
+A ofuscação de código é uma prática essencial para proteger a propriedade intelectual e a segurança de aplicações web. Em projetos .NET Core, a inclusão de scripts JavaScript pode apresentar um vetor para engenharia reversa e exploração de vulnerabilidades. Este artigo explora uma abordagem robusta para integrar a obfuscação de código JavaScript em projetos .NET Core, utilizando a biblioteca `javascript-obfuscator` e automatizando o processo através do arquivo de projeto (.csproj) e do Dockerfile.
 
 **Utilizando `javascript-obfuscator` com Node.js:**
 
