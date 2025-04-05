@@ -1,5 +1,6 @@
 ---
-title: Ofuscação de Código JavaScript em Projetos .NET Core
+title: "Ofuscação de Código JavaScript em Projetos .NET Core com a biblioteca
+  JavaScript Obfuscator "
 description: Este artigo explora a integração eficaz da ofuscação de código
   JavaScript em projetos .NET Core.
 date: 2023-11-07T08:44:51.000Z
