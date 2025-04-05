@@ -95,8 +95,8 @@ body.dark {
     --mediumBackground: #1a1a1a;
     --background: #121212;
     --white: #fff;
-    --black: #121212;    --logo-rect-fill: var(--highlight);
-    --logo-rect-opacity: 0.9;    --logo-rect-fill: var(--highlight);
+    --black: #121212;
+    --logo-rect-fill: var(--highlight);
     --logo-rect-opacity: 0.9;
 } 
 
@@ -118,8 +118,12 @@ body.light{
     --texts: #666666;
     --highlight: #4ecca3;
     --mediumBackground: #f9f9f9;
-    --background:     --logo-rect-fill: #2D2D2D;
-    --logo-rect-opacity: 1;    --white: #fff;
+    --background: #fff;
+    --logo-rect-fill: #2D2D2D;
+    --logo-rect-opacity: 1;
+    --white: #fff;
+    --logo-rect-opacity: 1;
+    --white: #fff;
     --black: #333;
 }
 
