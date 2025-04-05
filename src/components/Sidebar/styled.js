@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'styled-media-query'
 
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { Link } from 'gatsby'
 
 export const SidebarWrapper = styled.aside`
     align-items: flex-start;
@@ -11,17 +11,17 @@ export const SidebarWrapper = styled.aside`
     flex-direction: column;
     height: auto;
     position: fixed;
-    padding:1rem 2rem;
+    padding: 0.75rem 1.5rem;.5rem;
     text-align: center;
-    width: 100%;
+    width: 100%;    box-shadow: 0 1px 2px rgba(0,0,0,0.05);    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 
     ${media.lessThan("large")`
         align-items: flex-start;
-        height: auto;
-        padding:1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        padding: 0.75rem 1.5rem;
         width: 100%;
-    `}
 
+    `}
 `
 
 export const SidebarGroup = styled.div`
@@ -34,7 +34,7 @@ export const SidebarGroup = styled.div`
   `}
 `
 
-export const SidebarLink = styled(AniLink)`
+export const SidebarLink = styled(Link)`
     display: block;
 
     &.active {
@@ -48,10 +48,11 @@ export const SidebarItem = styled.span`
     color: var(--texts);
     cursor: pointer;
     display: block;
-    height: 3.75rem;
-    padding: 1.1rem;
+    height: 3.25rem;
+    padding: 1rem;
     position: relative;
-    width: 3.75rem;
+    width: 3.25rem;
+    transition: color 0.2s;
 
     &.light {
         color: #d4d400;
@@ -76,9 +77,9 @@ export const SidebarItem = styled.span`
     }
   `}
   ${media.lessThan("large")`
-    height: 3.2rem;
-    padding: .9rem;
+    height: 2.8rem;
+    padding: 0.8rem;
     position: relative;
-    width: 3.2rem;
+    width: 2.8rem;
   `}
 `

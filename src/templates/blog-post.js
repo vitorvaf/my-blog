@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import * as S from "../components/Post/styled"
 import RecommendedPosts from "../components/RecommendedPosts"
 import Comments from "../components/Comments"
+import BackButton from "../components/BackButton"
 
 const BlogPost = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -19,6 +20,7 @@ const BlogPost = ({ data, pageContext }) => {
         PostDescription={post.frontmatter.description}
         image={post.frontmatter.image}
       ></SEO>
+      <BackButton />
       <S.PostHeader>
         <S.PostDate>
           {post.frontmatter.date} • {post.timeToRead} min de leitura

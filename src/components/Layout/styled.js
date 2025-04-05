@@ -12,9 +12,11 @@ export const LayoutWrapper = styled.section`
 export const LayoutMain = styled.main`
   background: var(--background);
   min-height: 100vh;
-  padding: 5.125rem 0 3rem 0;
-  transition: background, color 0.5s;
+  padding: 6rem 0 2rem 0;
+  transition: background 0.3s, color 0.3s;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
   body#grid & {
     grid-template-areas:
@@ -23,6 +25,6 @@ export const LayoutMain = styled.main`
   }
 
   ${media.lessThan("large")`
-    padding: 4.125rem 0 3rem 0;
+    padding: 3rem 1rem 2rem 1rem;
   `}
 `
