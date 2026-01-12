@@ -6,6 +6,7 @@ export const PostItemLink = styled(Link)`
   color: var(--texts);
   display: flex;
   text-decoration: none;
+  transition: transform 0.2s ease;
 
   body#grid & {
     background-color: var(--background);
@@ -13,6 +14,18 @@ export const PostItemLink = styled(Link)`
 
   &:hover {
     color: var(--highlight);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
   }
 `
 

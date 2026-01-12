@@ -10,7 +10,8 @@ export const FooterWrapper = styled.footer`
   margin-top: auto;
 
   ${media.lessThan("large")`
-    display: none;
+    padding: 0.75rem 1rem;
+    margin-bottom: 3.5rem;
   `}
 `
 
@@ -20,7 +21,8 @@ export const FooterContent = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.75rem;
+  align-items: center;
 `
 
 export const FooterText = styled.p`
@@ -28,4 +30,9 @@ export const FooterText = styled.p`
   font-size: 0.8rem;
   line-height: 1.4;
   margin: 0;
+
+  ${media.lessThan("large")`
+    font-size: 0.7rem;
+    line-height: 1.3;
+  `}
 `

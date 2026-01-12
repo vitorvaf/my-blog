@@ -7,14 +7,26 @@ import * as S from "../components/Post/styled"
 import RecommendedPosts from "../components/RecommendedPosts"
 import Comments from "../components/Comments"
 import BackButton from "../components/BackButton"
+import Breadcrumbs from "../components/Breadcrumbs"
+import ReadingProgress from "../components/ReadingProgress"
+import CodeCopyButton from "../components/CodeCopyButton"
+import TableOfContents from "../components/TableOfContents"
 
 const BlogPost = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const next = pageContext.nextPost
   const previous = pageContext.previousPost
 
+  const breadcrumbItems = [
+    { label: "Home", url: "/" },
+    { label: "Blog", url: "/" },
+    { label: post.frontmatter.title },
+  ]
+
   return (
     <Layout>
+      <ReadingProgress />
+      <CodeCopyButton />
       <SEO
         title={post.frontmatter.title}
         PostDescription={post.frontmatter.description}
@@ -22,6 +34,7 @@ const BlogPost = ({ data, pageContext }) => {
       ></SEO>
       <BackButton />
       <S.PostHeader>
+        <Breadcrumbs items={breadcrumbItems} />
         <S.PostDate>
           {post.frontmatter.date} • {post.timeToRead} min de leitura
         </S.PostDate>
@@ -29,7 +42,8 @@ const BlogPost = ({ data, pageContext }) => {
         <S.PostDescription>{post.frontmatter.description}</S.PostDescription>
       </S.PostHeader>
       <S.MainContent>
-        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        <TableOfContents />
+        <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }}></div>
       </S.MainContent>
       <RecommendedPosts next={next} previous={previous} />
       <Comments url={post.fields.slug} title={post.frontmatter.title} />

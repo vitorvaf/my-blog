@@ -4,13 +4,14 @@ import * as S from "./styled"
 const BackButton = () => {
   return (
     <S.BackButtonWrapper>
-      <S.BackButtonLink to="/" cover direction="left" bg="var(--background)" duration={0.6}>
+      <S.BackButtonLink to="/" cover direction="left" bg="var(--background)" duration={0.6} aria-label="Voltar para a lista de artigos">
         <svg 
           width="18" 
           height="18" 
           viewBox="0 0 24 24" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
         >
           <path 
             d="M19 12H5" 
