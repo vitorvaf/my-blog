@@ -5,39 +5,41 @@ import { Link } from 'gatsby'
 
 
 export const MenuBarWrapper = styled.aside`
-    border-top: 1px solid var(--borders);
-    bottom: 0;    
-    height: auto;
-    padding: 0;
-    position: fixed;
-    width: 100%;
-    display: flex;
     align-items: center;
     background: var(--mediumBackground);
     border-left: 1px solid var(--borders);
-    border-top: 1px solid var(--borders);
+    border-radius: 8px 0 0 8px;
     display: flex;
-    flex-direction: row;    
-    justify-content: space-between;        
-    right: 0;    
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    padding: 0.5rem 0;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     transition: background 0.5s;
+    width: auto;
+    z-index: 100;
     
   ${media.lessThan("large")`
+    border-left: none;
     border-top: 1px solid var(--borders);
+    border-radius: 0;
     bottom: 0;
     flex-direction: row;
     height: auto;
     padding: 0;
-    position: fixed;
+    top: auto;
+    transform: none;
     width: 100%;
-    display: flex;
   `}
 
 `
 
 export const MenuBarGroup = styled.div`
     display: flex;
-    flex-direction: row;    
+    flex-direction: column;    
 
     ${media.lessThan("large")`
     flex-direction: row;
