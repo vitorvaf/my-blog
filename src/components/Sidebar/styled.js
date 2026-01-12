@@ -4,11 +4,11 @@ import media from 'styled-media-query'
 import { Link } from 'gatsby'
 
 export const SidebarWrapper = styled.aside`
-    align-items: flex-start;
+    align-items: center;
     border-bottom: 1px solid var(--borders);
     background: var(--mediumBackground);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
     position: fixed;
     padding: 0.75rem 1.5rem;
@@ -19,8 +19,8 @@ export const SidebarWrapper = styled.aside`
     z-index: 99;
 
     ${media.lessThan("large")`
-        align-items: flex-start;
-        padding: 0.75rem 1.5rem;
+        align-items: center;
+        padding: 0.75rem 1rem;
         width: 100%;
     `}
 `

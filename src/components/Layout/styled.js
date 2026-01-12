@@ -14,7 +14,7 @@ export const LayoutWrapper = styled.section`
 export const LayoutMain = styled.main`
   background: var(--background);
   flex: 1;
-  padding: 6rem 6rem 2rem 2rem;
+  padding: 5rem 4rem 2rem 4rem;
   transition: background 0.3s, color 0.3s;
   width: 100%;
   max-width: 1200px;
@@ -27,6 +27,6 @@ export const LayoutMain = styled.main`
   }
 
   ${media.lessThan("large")`
-    padding: 6rem 1rem 5rem 1rem;
+    padding: 5rem 1.5rem 4rem 1.5rem;
   `}
 `

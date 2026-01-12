@@ -18,6 +18,7 @@ export const BackButtonWrapper = styled.div`
 export const BackButtonLink = styled(Link)`
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
   justify-content: flex-start;
@@ -25,6 +26,32 @@ export const BackButtonLink = styled(Link)`
   min-width: auto;
   text-transform: uppercase;
   padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--mediumBackground);
+    transform: translateX(-4px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
+  }
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(-2px);
+  }
 
   ${media.lessThan("large")`
     border-radius: 0;

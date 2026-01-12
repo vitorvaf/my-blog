@@ -57,6 +57,18 @@ body {
     color: var(--texts);
     transition: background 0.3s, color 0.3s;
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 img {
     display: block;
     width: 100%;
@@ -113,18 +125,66 @@ body.dark {
 }  */
 
 body.light{
-    --borders: #eaeaea;
-    --postColor: #333;
-    --texts: #666666;
-    --highlight: #4ecca3;
-    --mediumBackground: #f9f9f9;
+    --borders: #dedede;
+    --postColor: #222;
+    --texts: #4a4a4a;
+    --highlight: #1fa080;
+    --mediumBackground: #f5f5f5;
     --background: #fff;
     --logo-rect-fill: #2D2D2D;
     --logo-rect-opacity: 1;
     --white: #fff;
+    --black: #333;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+    --borders: #000;
+    --postColor: #000;
+    --texts: #000;
+    --highlight: #0000ff;
+    --mediumBackground: #ffff00;
+    --background: #fff;
+    --logo-rect-fill: #000;
     --logo-rect-opacity: 1;
     --white: #fff;
-    --black: #333;
+    --black: #000;
+}
+
+/* Copy Code Button Styles */
+.copy-code-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--highlight);
+    color: var(--background);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.9;
+    z-index: 10;
+}
+
+.copy-code-button:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.copy-code-button:active {
+    transform: translateY(0);
+}
+
+.copy-code-button.copied {
+    background: #4caf50;
+}
+
+.copy-code-button:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
 }
 
 `

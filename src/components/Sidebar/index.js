@@ -6,9 +6,6 @@ import * as S from "./styled"
 const SideBar = () => (
   <S.SidebarWrapper>   
     <Profile />
-    {/* <Search /> */}
-    {/* <SocialLinks />
-    <MenuLinks/> */}
   </S.SidebarWrapper>
 )
 

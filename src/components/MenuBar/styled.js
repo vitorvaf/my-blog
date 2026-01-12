@@ -64,6 +64,14 @@ export const MenuBarItem = styled.span`
     padding: 1.1rem;
     position: relative;
     width: 3.75rem;
+    background: none;
+    border: none;
+    transition: color 0.3s;
+
+    &:focus-visible {
+        outline: 2px solid var(--highlight);
+        outline-offset: 2px;
+    }
 
     &.light {
         color: #d4d400;
@@ -79,7 +87,7 @@ export const MenuBarItem = styled.span`
 
     &.display {
     ${media.lessThan("large")`
-      display: none;
+      display: block;
     `}
   }
   ${media.greaterThan("large")`

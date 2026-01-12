@@ -14,18 +14,21 @@ const Pagination = ({
 }) => (
   <S.PaginationWrapper>
     {!isFirst && (
-      <Link to={prevPage}>
+      <Link to={prevPage} aria-label="Ir para página anterior">
         ← página anterior
       </Link>
     )}
-    <p>
-      {currentPage} de {numPages}
-    </p>
+    <S.PaginationInfo>
+      <S.PageIndicator>
+        Página <strong>{currentPage}</strong> de <strong>{numPages}</strong>
+      </S.PageIndicator>
+      <S.ProgressBar>
+        <S.ProgressFill width={(currentPage / numPages) * 100} />
+      </S.ProgressBar>
+    </S.PaginationInfo>
     {!isLast && (
-      <Link
-        to={nextPage}
-      >
-        proxima página →
+      <Link to={nextPage} aria-label="Ir para próxima página">
+        próxima página →
       </Link>
     )}
   </S.PaginationWrapper>

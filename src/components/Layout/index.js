@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
     <S.LayoutWrapper>
       <GlobalStyles />
       <Sidebar />
-      <S.LayoutMain>{children}</S.LayoutMain>
+      <S.LayoutMain id="main-content">{children}</S.LayoutMain>
       <Footer />
       <MenuBar />
     </S.LayoutWrapper>

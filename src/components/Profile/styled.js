@@ -33,11 +33,17 @@ export const ProfileLogo = styled.div`
     justify-content: center;
     
     svg {
-        transition: transform 0.3s;
+        transition: transform 0.3s ease;
     }
     
     &:hover svg {
-        transform: scale(1.1);
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &:hover svg {
+            transform: scale(1.1);
+        }
     }
     
     ${media.lessThan("large")`
@@ -75,9 +81,10 @@ export const ProfileDescription = styled.p`
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.4;
-    display: none;  
+    display: none;
+    margin-top: 0.5rem;
 
     ${media.lessThan("large")`
-        display: none;  
+        display: none;
     `}
 `

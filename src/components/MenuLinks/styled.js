@@ -7,15 +7,17 @@ export const MenuLinksWrapper = styled.nav`
     ${media.lessThan("large")`
         display: none;
     `}
-
 `
 
 export const MenuLinkList = styled.ul`
-    font-size: 1,2rem;
-    font-weight: 300;
+    font-size: 0.95rem;
+    font-weight: 400;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 `
 export const MenuLinksItem = styled.li`
-    padding: 0.5rem 0;
+    padding: 0;
 
     .active{
         color: var(--highlight);
