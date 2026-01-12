@@ -6,6 +6,9 @@ const TableOfContents = () => {
   const [activeId, setActiveId] = useState("")
 
   useEffect(() => {
+    // Só executa no browser
+    if (typeof window === 'undefined') return
+
     // Extrai headings do conteúdo
     const article = document.querySelector(".post-content")
     if (!article) return

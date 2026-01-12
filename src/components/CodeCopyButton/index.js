@@ -2,6 +2,9 @@ import { useEffect } from "react"
 
 const CodeCopyButton = () => {
   useEffect(() => {
+    // Só executa no browser
+    if (typeof window === 'undefined') return
+
     // Adiciona botão de copiar a todos os blocos de código
     const addCopyButtons = () => {
       const codeBlocks = document.querySelectorAll("pre[class*='language-']")

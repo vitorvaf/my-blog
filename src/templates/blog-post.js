@@ -1,18 +1,16 @@
-import React, { Suspense, lazy } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import * as S from "../components/Post/styled"
 import RecommendedPosts from "../components/RecommendedPosts"
+import Comments from "../components/Comments"
 import BackButton from "../components/BackButton"
 import Breadcrumbs from "../components/Breadcrumbs"
 import ReadingProgress from "../components/ReadingProgress"
 import CodeCopyButton from "../components/CodeCopyButton"
 import TableOfContents from "../components/TableOfContents"
-import LoadingSkeleton from "../components/LoadingSkeleton"
-
-const Comments = lazy(() => import("../components/Comments"))
 
 const BlogPost = ({ data, pageContext }) => {
   const post = data.markdownRemark
@@ -48,9 +46,7 @@ const BlogPost = ({ data, pageContext }) => {
         <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }}></div>
       </S.MainContent>
       <RecommendedPosts next={next} previous={previous} />
-      <Suspense fallback={<LoadingSkeleton />}>
-        <Comments url={post.fields.slug} title={post.frontmatter.title} />
-      </Suspense>
+      <Comments url={post.fields.slug} title={post.frontmatter.title} />
     </Layout>
   )
 }

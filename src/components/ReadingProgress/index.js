@@ -5,6 +5,9 @@ const ReadingProgress = () => {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    // Só executa no browser
+    if (typeof window === 'undefined') return
+
     const updateProgress = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
