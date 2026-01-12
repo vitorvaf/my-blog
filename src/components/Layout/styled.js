@@ -3,16 +3,18 @@ import media from "styled-media-query"
 
 export const LayoutWrapper = styled.section`
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
   ${media.lessThan("large")`
-    flex-direction: columm;
+    flex-direction: column;
   `}
 `
 
 export const LayoutMain = styled.main`
   background: var(--background);
-  min-height: 100vh;
-  padding: 6rem 0 2rem 0;
+  flex: 1;
+  padding: 6rem 6rem 2rem 2rem;
   transition: background 0.3s, color 0.3s;
   width: 100%;
   max-width: 1200px;
@@ -25,6 +27,6 @@ export const LayoutMain = styled.main`
   }
 
   ${media.lessThan("large")`
-    padding: 3rem 1rem 2rem 1rem;
+    padding: 6rem 1rem 5rem 1rem;
   `}
 `

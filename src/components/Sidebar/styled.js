@@ -5,22 +5,23 @@ import { Link } from 'gatsby'
 
 export const SidebarWrapper = styled.aside`
     align-items: flex-start;
-    border-right: 1px solid var(--borders);
+    border-bottom: 1px solid var(--borders);
     background: var(--mediumBackground);
     display: flex;
     flex-direction: column;
     height: auto;
     position: fixed;
-    padding: 0.75rem 1.5rem;.5rem;
+    padding: 0.75rem 1.5rem;
     text-align: center;
-    width: 100%;    box-shadow: 0 1px 2px rgba(0,0,0,0.05);    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    top: 0;
+    z-index: 99;
 
     ${media.lessThan("large")`
         align-items: flex-start;
         padding: 0.75rem 1.5rem;
-        padding: 0.75rem 1.5rem;
         width: 100%;
-
     `}
 `
 
