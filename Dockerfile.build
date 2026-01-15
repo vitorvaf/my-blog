@@ -1,0 +1,40 @@
+FROM node:16 AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# Set dummy environment variables for Algolia plugin
+ENV GATSBY_ALGOLIA_APP_ID=dummy
+ENV ALGOLIA_ADMIN_KEY=dummy
+ENV GATSBY_ALGOLIA_INDEX_NAME=dummy
+
+RUN npm run build
+
+FROM debian
+
+RUN apt-get update && apt-get install -y apache2 && apt-get clean
+RUN chown www-data:www-data /var/lock && chown www-data:www-data /var/run/ && chown www-data:www-data /var/log/
+
+ENV APACHE_LOCK_DIR="/var/lock"
+ENV APACHE_PID_FILE="/var/run/apache2.pid"
+ENV APACHE_RUN_USER="www-data"
+ENV APACHE_RUN_GROUP="www-data"
+ENV APACHE_LOG_DIR="/var/log/apache2"
+
+COPY --from=build /app/public /var/www/html/
+
+LABEL description="Gatsby_Blog"
+LABEL version="1.0.0"
+
+USER root
+
+WORKDIR /var/www/html/
+
+EXPOSE 80
+
+ENTRYPOINT ["/usr/sbin/apachectl"]
+CMD ["-D", "FOREGROUND"]
