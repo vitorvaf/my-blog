@@ -14,12 +14,8 @@ const links = [
         url: `https://youtube.com/${handle}`
     },
     {
-        label: "Instagram",
-        url: `https://instagram.com/${handle}`
-    },
-    {
-        label: "Unsplash",
-        url: `https://unsplash.com/${handle}`
+        label: "Linkedin",
+        url: `https://www.linkedin.com/in/vitor-abreu-freitas/`
     }
 
 ]

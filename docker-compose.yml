@@ -1,0 +1,12 @@
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    container_name: my-blog
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    labels:
+      - "description=Gatsby Blog"
+      - "version=1.0.0"
