@@ -27,13 +27,14 @@ Para garantir que uma empresa não acesse os dados de outra, o sistema utiliza m
 
 Existem três estratégias principais para gerenciar o banco de dados em um ambiente multi-tenant, cada uma com diferentes níveis de isolamento:
 
-| Abordagem                     | Descrição                                                              | Nível de Isolamento |
-| ----------------------------- | ---------------------------------------------------------------------- | ------------------- |
-| **Bancos de Dados Separados** | Cada empresa possui sua própria base de dados física.                  | **Muito Alto**      |
-| **Tabelas Separadas**         | Utilizam-se tabelas distintas para cada empresa dentro do mesmo banco. | **Médio**           |
-| **Coluna de Tenant ID**       | Todos os dados ficam na mesma tabela, filtrados por uma coluna de ID.  | **Lógico**          |
+| Abordagem                     | Descrição                                                                 | Nível de Isolamento |
+|------------------------------|---------------------------------------------------------------------------|---------------------|
+| **Bancos de Dados Separados** | Cada empresa possui sua própria base de dados física.                    | **Muito Alto**      |
+| **Tabelas Separadas**         | Utilizam-se tabelas distintas para cada empresa dentro do mesmo banco.   | **Médio**           |
+| **Coluna de Tenant ID**       | Todos os dados ficam na mesma tabela, filtrados por uma coluna de ID.    | **Lógico**          |
 
-*Nota: Para grandes volumes de dados ou requisitos rígidos de segurança, a abordagem de bancos separados é a mais recomendada.*
+> *Nota: Para grandes volumes de dados ou requisitos rígidos de segurança, a abordagem de bancos separados é a mais recomendada.*
+
 
 - - -
 
