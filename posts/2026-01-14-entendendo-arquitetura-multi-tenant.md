@@ -59,5 +59,3 @@ A adoção desta arquitetura traz benefícios estratégicos tanto para o provedo
 - - -
 
 **Dica de Arquitetura:** Ao projetar sistemas multi-tenant, é essencial considerar a **observabilidade**. Como vários clientes usam o mesmo ambiente, monitorar métricas, logs e performance em tempo real é vital para garantir que um inquilino com alta carga não prejudique a experiência dos outros.
-
-Gostaria que eu detalhasse alguma das estratégias de banco de dados mencionadas ou explorasse como o **API Gateway** pode ajudar no roteamento desses inquilinos?
