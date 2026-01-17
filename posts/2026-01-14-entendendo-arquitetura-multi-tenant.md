@@ -45,5 +45,3 @@ Para que uma arquitetura multi-tenant seja verdadeiramente escalável e resilien
 Imagine uma plataforma SaaS de finanças operando de forma **Stateless** em nuvem. Quando a demanda aumenta (como no fechamento de mês), o sistema escala horizontalmente adicionando novos servidores. Como a aplicação não guarda dados locais, o **API Gateway** pode rotear qualquer inquilino (identificado pelo seu **Tenant ID**) para qualquer um dos servidores disponíveis, garantindo performance e economia de recursos sem que uma empresa jamais visualize os dados da outra.
 
 ---
-
-**Este conteúdo atende à sua necessidade de um artigo completo? Caso deseje, posso aprofundar em como o pilar de "Eficiência de Custos" do framework Well-Architected se aplica especificamente ao monitoramento desses gastos.**
