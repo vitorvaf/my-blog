@@ -24,7 +24,7 @@ O projeto é open source e está disponível em:
 
 ## Motivação e Contexto Comunitário
 
-Rafael Quevedo atua diariamente na curadoria e divulgação de vagas de tecnologia, utilizando redes sociais como principal canal de distribuição. Com o crescimento do volume de oportunidades, surgiram desafios claros:
+[Rafael Quevedo](https://www.instagram.com/querovagas23/) atua diariamente na curadoria e divulgação de vagas de tecnologia, utilizando redes sociais como principal canal de distribuição. Com o crescimento do volume de oportunidades, surgiram desafios claros:
 
 - Alto custo manual de curadoria
 - Dificuldade de padronização das vagas
