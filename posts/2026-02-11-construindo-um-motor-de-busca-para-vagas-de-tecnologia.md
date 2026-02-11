@@ -1,5 +1,6 @@
 ---
-title: Construindo um Motor de Busca para Vagas de Tecnologia
+title: "Motor de Busca para Vagas de Tecnologia: Automatizando a Divulgação para
+  a Comunidade"
 description: Este artigo descreve a concepção, arquitetura e implementação de um
   motor de busca focado em vagas de tecnologia, explorando decisões técnicas,
   desafios e possibilidades de evolução
@@ -12,103 +13,92 @@ background: "#637a91"
 
 Buscar vagas de tecnologia parece simples à primeira vista, mas rapidamente se torna um problema complexo quando analisamos a **qualidade dos dados**, a **ambiguidade das descrições** e a **falta de semântica** nas plataformas tradicionais.
 
-Termos como *"Full Stack"*, *"Pleno"* ou *"Experiência com cloud"* variam drasticamente de empresa para empresa. Em muitos casos, a busca se resume a *matching textual*, ignorando contexto técnico, stack real e senioridade.
+Termos como *“Pleno”*, *“Full Stack”* ou *“Experiência com cloud”* variam drasticamente entre empresas, e muitas plataformas ainda se baseiam apenas em *matching textual*, ignorando contexto técnico, stack real e senioridade.
 
-Este artigo descreve a concepção, arquitetura e implementação de um **motor de busca focado exclusivamente em vagas de tecnologia**, explorando decisões técnicas, desafios encontrados e caminhos de evolução — incluindo o uso futuro de inteligência artificial.
+Este projeto nasceu com um propósito claro: **automatizar e evoluir a divulgação e a busca de vagas para ajudar a comunidade de tecnologia**, apoiando o trabalho voluntário de **Rafael Quevedo**, que utiliza o Instagram **@querovagas23** para divulgar oportunidades sem fins lucrativos.
 
-O projeto é open source e está disponível em:
-👉 [https://github.com/vitorvaf/job-search-engine](https://github.com/vitorvaf/job-search-engine)
+O projeto é open source e está disponível em:  
+👉 https://github.com/vitorvaf/job-search-engine
 
 ---
 
-## A Ideia do Projeto
+## Motivação e Contexto Comunitário
 
-A proposta do motor de busca parte de alguns princípios claros:
+Rafael Quevedo atua diariamente na curadoria e divulgação de vagas de tecnologia, utilizando redes sociais como principal canal de distribuição. Com o crescimento do volume de oportunidades, surgiram desafios claros:
 
-* **Stack-first**: tecnologia vem antes do cargo
-* **Dados estruturados** a partir de textos não estruturados
-* **Arquitetura evolutiva**, preparada para IA
-* **Busca orientada a intenção**, não apenas palavras-chave
+- Alto custo manual de curadoria
+- Dificuldade de padronização das vagas
+- Falta de filtros técnicos precisos
+- Necessidade de automação e escala
 
-O objetivo não é apenas encontrar vagas que *contêm* determinado termo, mas vagas que **realmente façam sentido para um determinado perfil técnico**.
+Este motor de busca surge como uma **ferramenta de apoio**, automatizando tarefas repetitivas e permitindo foco no que realmente importa: **ajudar pessoas a encontrar oportunidades relevantes**.
 
 ---
 
 ## Visão Geral da Arquitetura
 
-A solução foi pensada de forma modular, separando claramente as responsabilidades entre coleta, processamento, indexação e busca.
+A arquitetura foi pensada de forma modular, permitindo evolução incremental e integração com novos canais.
 
 ```mermaid
 flowchart LR
     A[Fontes de Vagas] --> B[Ingestão]
     B --> C[Normalização]
     C --> D[Indexação]
-    D --> E[API de Busca]
-    E --> F[Cliente / UI]
+    D --> E[API / Distribuição]
+    E --> F[Canais da Comunidade]
 ```
 
-### Componentes principais
+### Componentes
 
-* **Ingestão**: recebe vagas de diferentes fontes
-* **Normalização**: transforma texto livre em dados estruturados
-* **Indexação**: prepara os dados para busca eficiente
-* **API de Busca**: expõe filtros e critérios de consulta
+- **Ingestão**: coleta vagas de múltiplas fontes
+- **Normalização**: converte texto livre em dados estruturados
+- **Indexação**: organiza dados para busca eficiente
+- **API / Distribuição**: fornece dados para bots, canais e futuras UIs
 
 ---
 
-## Tecnologias Utilizadas
+## Stack Tecnológica Real do Projeto
 
-### Backend
+O projeto foi desenvolvido inteiramente em **C#**, utilizando o ecossistema **.NET** como base principal.
 
-* **Node.js / TypeScript**
-* Arquitetura modular, com separação clara entre domínio, infraestrutura e aplicação
-* Código orientado à legibilidade e evolução, não apenas performance prematura
+### Stack Principal
 
-### Banco de Dados
+- **C# / .NET**
+- **Arquitetura modular**
+- **Docker** para padronização de ambiente
+- Estrutura preparada para APIs, processamento e automações
 
-* Banco relacional para garantir consistência dos dados
-* Modelagem focada em entidades de domínio como *Job*, *Stack*, *Seniority* e *Source*
-
-### Busca
-
-* Busca textual combinada com filtros estruturados
-* Estratégia inicial baseada em *keyword matching* + *scoring*
-* Preparado para evoluir para busca semântica
-
-### Infraestrutura
-
-* Docker para padronização do ambiente
-* Projeto preparado para CI/CD
+A escolha do .NET se deu pela robustez, tipagem forte e facilidade de evolução para cenários de alta complexidade e integração futura com IA.
 
 ---
 
 ## Modelagem de Dados de Vagas
 
-Um dos principais desafios é transformar descrições livres em dados estruturados.
+O núcleo do projeto está na transformação de dados não estruturados em informações úteis.
 
-Exemplo simplificado de uma vaga normalizada:
+Exemplo de vaga normalizada:
 
 ```json
 {
-  "title": "Software Engineer",
-  "seniority": "Senior",
-  "stack": ["Node.js", "TypeScript", "PostgreSQL"],
-  "workModel": "Remote",
-  "location": "Brazil",
-  "source": "LinkedIn"
+  "title": "Desenvolvedor Backend",
+  "stack": ["C#", ".NET", "SQL Server"],
+  "seniority": "Pleno",
+  "workModel": "Remoto",
+  "location": "Brasil",
+  "source": "Comunidade"
 }
 ```
 
-### Principais desafios
+### Desafios enfrentados
 
-* Sinônimos técnicos (*JS* vs *JavaScript*)
-* Overlapping de stacks
-* Senioridade implícita
-* Excesso de buzzwords
+- Variações semânticas de stack
+- Senioridade implícita
+- Excesso de buzzwords
+- Dados inconsistentes entre fontes
 
 ---
 
-## Fluxo de Processamento de uma Vaga
+## Fluxo de Processamento de Vagas
 
 ```mermaid
 sequenceDiagram
@@ -116,38 +106,32 @@ sequenceDiagram
     participant Ingestao
     participant Normalizacao
     participant Indexacao
-    participant API
+    participant Distribuicao
 
-    Fonte->>Ingestao: Envia vaga bruta
-    Ingestao->>Normalizacao: Texto não estruturado
+    Fonte->>Ingestao: Vaga bruta
+    Ingestao->>Normalizacao: Texto livre
     Normalizacao->>Indexacao: Dados estruturados
-    Indexacao->>API: Documento indexado
+    Indexacao->>Distribuicao: APIs / Bots
 ```
 
 ---
 
-## Estratégia de Busca e Ranking
+## Estratégia de Busca e Distribuição
 
-O mecanismo de busca combina diferentes critérios:
+A busca não se limita a palavras-chave. O motor considera:
 
-* Match de stack
-* Compatibilidade de senioridade
-* Modelo de trabalho
-* Penalização de vagas genéricas
+- Compatibilidade de stack
+- Senioridade
+- Modelo de trabalho
+- Organização dos dados para redistribuição automática
 
-Cada vaga recebe um *score*, permitindo ordenação por relevância.
-
-Mesmo em sua versão inicial, a arquitetura permite ajustes finos de pesos e critérios, sem necessidade de reescrita estrutural.
+Isso permite não apenas buscar vagas, mas **distribuí-las de forma inteligente para canais da comunidade**.
 
 ---
 
 ## Preparação para Inteligência Artificial
 
-Desde o início, o projeto foi pensado para permitir evolução com IA:
-
-* Classificação automática de senioridade
-* Extração semântica de stack a partir de texto livre
-* Busca por intenção ("quero trabalhar com backend em cloud")
+O projeto foi desenhado para evolução com IA, sem acoplamento direto ao core.
 
 ```mermaid
 flowchart LR
@@ -156,35 +140,34 @@ flowchart LR
     C --> D[Dados Estruturados]
 ```
 
-A IA entra como **camada de enriquecimento**, não como dependência crítica do core.
+Possibilidades futuras:
+- Classificação automática de senioridade
+- Extração semântica de skills
+- Busca por intenção
+- Ranking inteligente
 
 ---
 
-## Desafios Encontrados
+## Impacto Social e Comunitário
 
-* Dados extremamente heterogêneos
-* Falta de padronização entre fontes
-* Ambiguidade semântica
-* Decisão entre performance imediata vs arquitetura futura
+Este projeto tem como objetivo **potencializar iniciativas comunitárias**, reduzindo esforço manual e ampliando alcance.
 
-Esses desafios reforçaram a importância de **modelagem correta e decisões arquiteturais conscientes**, mesmo em projetos pessoais.
+Ele não visa monetização, mas sim **impacto positivo**, reforçando a importância de tecnologia como ferramenta de inclusão.
 
 ---
 
 ## Possíveis Evoluções
 
-* Recomendação personalizada de vagas
-* Alertas inteligentes
-* Feedback loop usuário → ranking
-* Treinamento de modelos próprios
-* Matching candidato × vaga
+- Alertas personalizados
+- Matching candidato × vaga
+- Bots inteligentes
+- Feedback loop da comunidade
+- Dashboards de vagas por stack
 
 ---
 
 ## Conclusão
 
-Mais do que um motor de busca, este projeto se tornou um **laboratório de arquitetura, dados e inteligência aplicada ao mercado de tecnologia**.
+Este motor de busca representa mais do que um experimento técnico. Ele é um **projeto com propósito**, combinando engenharia de software, automação e impacto social.
 
-Ele demonstra como problemas aparentemente simples escondem desafios reais de engenharia — e como decisões bem fundamentadas permitem evolução contínua sem retrabalho.
-
-O código é open source e contribuições são bem-vindas.
+Ao apoiar iniciativas como a de Rafael Quevedo, o projeto demonstra como soluções técnicas bem arquitetadas podem gerar valor real para a comunidade de tecnologia.
