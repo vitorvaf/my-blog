@@ -82,6 +82,17 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 12. **`README.md`**: A text file containing useful reference information about your project.
 
+## 🧹 Code formatting & pre-commit hook
+
+This project uses [Prettier](https://prettier.io/) via a Git pre-commit hook powered by [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged).
+
+- The hook is installed automatically after `npm install` by the `prepare` script (`husky install`). No manual setup is required.
+- On every `git commit`, staged `*.{js,jsx,ts,tsx,json,md}` files are auto-formatted with `prettier --write` before the commit is created. Only staged files are touched, so unrelated commits stay fast.
+- You may see your staged files reformatted mid-commit — this is expected. The reformatted changes are added to the same commit automatically by lint-staged.
+- To format the entire repository on demand, run `npm run format`.
+
+If you ever need to bypass the hook (e.g. for a WIP commit), use `git commit --no-verify`.
+
 ## 🎓 Learning Gatsby
 
 Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
