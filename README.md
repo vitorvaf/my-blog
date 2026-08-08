@@ -66,6 +66,14 @@ of the three build-time vars are missing, `gatsby-config.js` will log a
 warning at startup so you can spot misconfigured environments (including CI)
 early.
 
+## 🧪 Development scripts
+
+- `npm run develop` — start the Gatsby development server.
+- `npm run build` — produce a production build in `public/`.
+- `npm run serve` — serve the production build locally.
+- `npm run format` — run Prettier over the repo (writes fixes).
+- `npm run lint` — run ESLint over `src/**/*.{js,jsx,tsx}` and the `gatsby-*.js` config files. Uses `eslint-config-react-app` for React / hooks / jsx-a11y rules, with `eslint-config-prettier` disabling any stylistic rules that would conflict with `.prettierrc`.
+
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
