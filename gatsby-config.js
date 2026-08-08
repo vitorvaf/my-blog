@@ -1,39 +1,32 @@
 require("dotenv").config()
 
-const queries = require('./src/utils/algollia_queries')
+const queries = require("./src/utils/algollia_queries")
 
-// Warn (don't crash) when Algolia build-time credentials are missing. Without
-// these, `gatsby-plugin-algolia-search` silently receives `undefined` values
-// and either no-ops or errors deep inside the plugin — this surfaces the root
-// cause up front. See `.env.example` and the README for setup instructions.
-const requiredAlgoliaEnvVars = [
-  'GATSBY_ALGOLIA_APP_ID',
-  'ALGOLIA_ADMIN_KEY',
-  'GATSBY_ALGOLIA_INDEX_NAME',
-]
-const missingAlgoliaEnvVars = requiredAlgoliaEnvVars.filter(
-  (name) => !process.env[name]
-)
-if (missingAlgoliaEnvVars.length > 0) {
+const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID
+const algoliaAdminKey = process.env.ALGOLIA_ADMIN_KEY
+const algoliaIndexName = process.env.GATSBY_ALGOLIA_INDEX_NAME
+
+// Warn (don't crash) when Algolia build-time credentials are missing. The plugin
+// is configured with `continueOnFailure: true` below, so without these the
+// search index is silently skipped — this surfaces the root cause up front.
+// See `.env.example` and the README for setup instructions.
+if (!algoliaAppId || !algoliaAdminKey || !algoliaIndexName) {
   console.warn(
-    `[gatsby-config] Missing Algolia environment variable(s): ${missingAlgoliaEnvVars.join(
-      ', '
-    )}. Copy .env.example to .env and fill in values from https://www.algolia.com/account/api-keys/ — see README.md for details.`
+    "[gatsby-config] Algolia env vars (GATSBY_ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, GATSBY_ALGOLIA_INDEX_NAME) are missing. Search indexing will be skipped for this build. Copy .env.example to .env and fill in values from https://www.algolia.com/account/api-keys/ — see README.md for details."
   )
 }
-
 
 module.exports = {
   siteMetadata: {
     title: `Vitor Abreu`,
     position: `Full Stack developer`,
-    description: `Desenvolvedor full stack especializado em tecnologias Web 
+    description: `Desenvolvedor full stack especializado em tecnologias Web
     e entusiasta de tecnologias mobile`,
     author: `@vitorvaf`,
-    siteUrl:`https://vitorabreu.netlify.app/`
+    siteUrl: `https://vitorabreu.netlify.app/`,
   },
   plugins: [
-    `gatsby-plugin-transition-link`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     // needs to be the first to work with gatsby-images
@@ -65,7 +58,9 @@ module.exports = {
           {
             resolve: "gatsby-remark-relative-images",
             options: {
-              name: "uploads",
+              // root of `media_folder` from static/admin/config.yml, matches
+              // the `uploads` gatsby-source-filesystem instance above
+              staticFolderName: "static",
             },
           },
           {
@@ -84,14 +79,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-algolia-search`,
+      resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME, // for all queries
+        appId: algoliaAppId,
+        apiKey: algoliaAdminKey,
+        indexName: algoliaIndexName, // for all queries
         queries,
-        chunkSize: 10000, 
-        enablePartialUpdates: true, // default: false        
+        chunkSize: 10000,
+        continueOnFailure: true, // don't fail the build when Algolia creds/indexing are unavailable
       },
     },
     {
@@ -111,7 +106,7 @@ module.exports = {
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-     `gatsby-plugin-offline`,
-     `gatsby-plugin-netlify-cms`
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify-cms`,
   ],
 }

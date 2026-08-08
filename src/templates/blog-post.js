@@ -29,7 +29,7 @@ const BlogPost = ({ data, pageContext }) => {
       <CodeCopyButton />
       <SEO
         title={post.frontmatter.title}
-        PostDescription={post.frontmatter.description}
+        description={post.frontmatter.description}
         image={post.frontmatter.image}
       ></SEO>
       <BackButton />
@@ -43,7 +43,10 @@ const BlogPost = ({ data, pageContext }) => {
       </S.PostHeader>
       <S.MainContent>
         <TableOfContents />
-        <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        <div
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        ></div>
       </S.MainContent>
       <RecommendedPosts next={next} previous={previous} />
       <Comments url={post.fields.slug} title={post.frontmatter.title} />
