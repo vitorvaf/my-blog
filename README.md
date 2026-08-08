@@ -40,6 +40,14 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
+## 🧪 Development scripts
+
+- `npm run develop` — start the Gatsby development server.
+- `npm run build` — produce a production build in `public/`.
+- `npm run serve` — serve the production build locally.
+- `npm run format` — run Prettier over the repo (writes fixes).
+- `npm run lint` — run ESLint over `src/**/*.{js,jsx,tsx}` and the `gatsby-*.js` config files. Uses `eslint-config-react-app` for React / hooks / jsx-a11y rules, with `eslint-config-prettier` disabling any stylistic rules that would conflict with `.prettierrc`.
+
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.

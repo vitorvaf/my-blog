@@ -41,7 +41,19 @@
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "prettier": "2.0.5",
+    "typescript": "^3.9.10"
   },
   "keywords": [
     "gatsby"
@@ -51,6 +63,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "eslint \"src/**/*.{js,jsx,tsx}\" gatsby-*.js",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
