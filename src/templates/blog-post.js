@@ -29,7 +29,7 @@ const BlogPost = ({ data, pageContext }) => {
       <CodeCopyButton />
       <SEO
         title={post.frontmatter.title}
-        PostDescription={post.frontmatter.description}
+        description={post.frontmatter.description}
         image={post.frontmatter.image}
       ></SEO>
       <BackButton />

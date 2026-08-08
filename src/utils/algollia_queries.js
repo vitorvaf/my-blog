@@ -1,11 +1,13 @@
 const postQuery = `{
     posts: allMarkdownRemark(
-        sort: { fields: frontmatter___date, order: DESC }
-        
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
             objectID: id
+            internal {
+              contentDigest
+            }
             fields {
               slug
             }
@@ -16,8 +18,8 @@ const postQuery = `{
               description
               title
               background
-            }    
-             excerpt(pruneLength: 5000)       
+            }
+             excerpt(pruneLength: 5000)
           }
         }
       }
@@ -40,10 +42,10 @@ const queries = [
       indexName: 'Posts', // overrides main index name, optional
       settings: {
         attributsToSnippet: ['excerpt:20']
-      }      
+      }
     },
   ];
 
   module.exports = queries
-  
+
 
