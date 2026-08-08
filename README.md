@@ -97,3 +97,32 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## 🧪 Testing
+
+Unit tests use [Jest](https://jestjs.io/) with `babel-preset-gatsby`, following the
+[official Gatsby unit-testing guide](https://www.gatsbyjs.com/docs/how-to/testing/unit-testing/).
+
+```shell
+npm test
+```
+
+Configuration lives in `jest.config.js`. Supporting files:
+
+- `jest-preprocess.js` — Babel transformer used by `babel-jest`.
+- `loadershim.js` — sets the `___loader` global Gatsby expects at runtime.
+- `__mocks__/file-mock.js` — stubs out static asset imports (images, fonts, media).
+- `__mocks__/gatsby.js` — mocks `graphql`, `Link`, `StaticQuery`, and `useStaticQuery`
+  so components that import from `gatsby` render in Jest's jsdom environment.
+
+### Adding a test
+
+Colocate tests next to the code they cover, in a `__tests__` folder, with a
+`.test.js` suffix:
+
+- Pure utilities: `src/utils/__tests__/<name>.test.js` — see
+  `src/utils/__tests__/getThemeColor.test.js` for the pattern.
+- Components: `src/components/<Name>/__tests__/<Name>.test.js` — see
+  `src/components/Breadcrumbs/__tests__/Breadcrumbs.test.js`. Use
+  `react-test-renderer` to render and walk the resulting tree; the `gatsby`
+  mock handles `Link` and GraphQL.
