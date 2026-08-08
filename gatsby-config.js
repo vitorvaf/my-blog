@@ -2,6 +2,26 @@ require("dotenv").config()
 
 const queries = require('./src/utils/algollia_queries')
 
+// Warn (don't crash) when Algolia build-time credentials are missing. Without
+// these, `gatsby-plugin-algolia-search` silently receives `undefined` values
+// and either no-ops or errors deep inside the plugin — this surfaces the root
+// cause up front. See `.env.example` and the README for setup instructions.
+const requiredAlgoliaEnvVars = [
+  'GATSBY_ALGOLIA_APP_ID',
+  'ALGOLIA_ADMIN_KEY',
+  'GATSBY_ALGOLIA_INDEX_NAME',
+]
+const missingAlgoliaEnvVars = requiredAlgoliaEnvVars.filter(
+  (name) => !process.env[name]
+)
+if (missingAlgoliaEnvVars.length > 0) {
+  console.warn(
+    `[gatsby-config] Missing Algolia environment variable(s): ${missingAlgoliaEnvVars.join(
+      ', '
+    )}. Copy .env.example to .env and fill in values from https://www.algolia.com/account/api-keys/ — see README.md for details.`
+  )
+}
+
 
 module.exports = {
   siteMetadata: {
