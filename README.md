@@ -40,6 +40,32 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
+## 🔑 Environment variables
+
+Both `gatsby-config.js` and `src/components/Search` read Algolia credentials
+from environment variables. `gatsby-config.js` loads them from a local `.env`
+file via `dotenv`, so before running `gatsby develop` or `gatsby build` you
+need to create one:
+
+```shell
+cp .env.example .env
+# then edit .env and fill in the values from https://www.algolia.com/account/api-keys/
+```
+
+The required keys are documented in [`.env.example`](./.env.example):
+
+| Variable | Where it's used | Notes |
+| --- | --- | --- |
+| `GATSBY_ALGOLIA_APP_ID` | build + browser | Algolia application id (public). |
+| `ALGOLIA_ADMIN_KEY` | build | Admin API key — **secret**, used to push the index. |
+| `GATSBY_ALGOLIA_INDEX_NAME` | build + browser | Name of the Algolia index to read/write. |
+| `GATSBY_ALGOLIA_SEARCH_KEY` | browser | Search-only API key used by the Search component. |
+
+Real `.env*` files are gitignored; only `.env.example` is checked in. If any
+of the three build-time vars are missing, `gatsby-config.js` will log a
+warning at startup so you can spot misconfigured environments (including CI)
+early.
+
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.

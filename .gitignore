@@ -53,6 +53,8 @@ typings/
 
 # dotenv environment variable files
 .env*
+# Keep the checked-in template so contributors know which vars to set (see README).
+!.env.example
 
 # gatsby files
 .cache/
