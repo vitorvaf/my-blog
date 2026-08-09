@@ -8,3 +8,17 @@
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
+
+# Hide the CMS admin from the public production deploy.
+# `force = true` is required so the rule overrides the static files in /admin.
+[[redirects]]
+  from = "/admin"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/404.html"
+  status = 404
+  force = true

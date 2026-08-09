@@ -1,10 +1,8 @@
 backend:
   name: github
-  repo: vitorvaf/my-blog
+  repo: vitorabreu/my-blog
   branch: master
-  site_domain: vitorabreu.netlify.app
 
-publish_mode: editorial_workflow
 media_folder: "static/assets/img"
 public_folder: "assets/img"
 
