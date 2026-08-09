@@ -5,24 +5,26 @@ export const FooterWrapper = styled.footer`
   background: var(--mediumBackground);
   border-top: 1px solid var(--borders);
   width: 100%;
-  padding: 1rem 2rem;
-  transition: background 0.3s;
+  padding: 1.5rem 2rem;
+  color: var(--texts);
+  font-size: 0.8rem;
   margin-top: auto;
 
   ${media.lessThan("large")`
-    padding: 0.75rem 1rem;
-    margin-bottom: 3.5rem;
+    padding: 1.25rem;
   `}
 `
 
 export const FooterContent = styled.div`
-  max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  ${media.lessThan("large")`
+    gap: 0.75rem;
+  `}
 `
 
 export const FooterText = styled.p`
@@ -30,9 +32,19 @@ export const FooterText = styled.p`
   font-size: 0.8rem;
   line-height: 1.4;
   margin: 0;
+`
 
-  ${media.lessThan("large")`
-    font-size: 0.7rem;
-    line-height: 1.3;
-  `}
+export const FooterLinks = styled.nav`
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+`
+
+export const FooterLink = styled.a`
+  color: var(--texts);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
