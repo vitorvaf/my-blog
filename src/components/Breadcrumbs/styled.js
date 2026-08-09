@@ -3,13 +3,12 @@ import media from "styled-media-query"
 import { Link } from "gatsby"
 
 export const BreadcrumbsWrapper = styled.nav`
-  margin: 0 auto;
-  max-width: 70rem;
-  padding: 0 5rem;
+  width: 100%;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
 
   ${media.lessThan("large")`
-    padding: 0 1rem;
-    max-width: 100%;
+    padding: 0;
   `}
 `
 
@@ -19,8 +18,8 @@ export const BreadcrumbsList = styled.ol`
   align-items: center;
   list-style: none;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--texts);
+  font-size: 0.8125rem;
+  color: var(--muted);
   padding: 0;
   margin: 0;
 `
@@ -32,7 +31,7 @@ export const BreadcrumbsItem = styled.li`
 `
 
 export const BreadcrumbsLink = styled(Link)`
-  color: var(--texts);
+  color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
   border-bottom: none;
@@ -48,6 +47,6 @@ export const BreadcrumbsSeparator = styled.span`
 `
 
 export const BreadcrumbsCurrent = styled.span`
-  color: var(--postColor);
-  font-weight: 500;
+  color: var(--muted);
+  font-weight: 400;
 `

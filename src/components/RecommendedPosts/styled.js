@@ -1,47 +1,60 @@
-
 import styled from "styled-components"
 import media from "styled-media-query"
 
-import { Link } from 'gatsby'
+import { Link } from "gatsby"
 
 export const RecommendedWrapper = styled.section`
-  border-bottom: 1px solid var(--borders);
+  width: 100%;
+  padding: 0;
+  padding-top: 2rem;
+  margin-top: 3rem;
   border-top: 1px solid var(--borders);
-  background: var(--mediumBackground);
+  border-bottom: 0;
   display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  ${media.lessThan("large")`
+    margin-top: 2.5rem;
+    gap: 1rem;
+  `}
+`
+
+export const RecommendedHeading = styled.h2`
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
 `
 
 export const RecommendedLink = styled(Link)`
-  align-items: center;
-  background: var(--mediumBackground);
-  color: var(--highlight);
+  align-items: flex-start;
+  background: transparent;
+  color: var(--postColor);
   display: flex;
-  padding: 3rem;
+  flex-direction: column;
+  padding: 0;
   text-decoration: none;
-  transition: background 0.5s;
-  width: 50%;
+  transition: opacity 0.2s;
 
-  ${media.lessThan("large")`
-    padding: 2rem 1rem;
-    line-height: 1.3;
-    font-size: .9rem;
-  `}
-  
   &:hover {
-    background: var(--borders);
+    opacity: 0.7;
   }
-  &.previous {
-    border-right: 1px solid var(--borders);
-  }
-  &.next {
-    justify-content: flex-end;
-  }
-  &.previous:before {
-    content: "\\2190";
-    margin-right: 0.5rem;
-  }
-  &.next:after {
-    content: "\\2192";
-    margin-left: 0.5rem;
-  }
+`
+
+export const RecommendedTitle = styled.span`
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--postColor);
+`
+
+export const RecommendedMeta = styled.span`
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  margin-top: 0.25rem;
 `

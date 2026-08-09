@@ -1,66 +1,69 @@
 import styled from "styled-components"
 import media from "styled-media-query"
 
-export const PostHeader = styled.header`
-  color: var(--postColor);
-  margin: auto;
-  max-width: 70rem;
-  padding: 0;
+// Single reading column — controls the shared width and horizontal padding
+// for every article element (breadcrumb, header, body, code, related).
+export const Column = styled.div`
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 32px;
 
   ${media.lessThan("large")`
-    padding: 0;
-    max-width: 100%;
+    padding: 0 20px;
   `}
+`
+
+export const PostHeader = styled.header`
+  color: var(--postColor);
+  width: 100%;
+  margin: 0;
+  padding: 0;
 `
 
 export const PostTitle = styled.h1`
+  font-family: var(--font-display);
   font-size: 2.5rem;
-  font-weight: 700;
-  padding: 0 5rem;
-  margin: 1rem auto;
-  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 1rem 0 0 0;
+  line-height: 1.15;
 
-  ${media.lessThan("large")`
-    font-size: 1.8rem;
-    line-height: 1.25;
-    padding: 0 1rem;
-  `}
+  @media (max-width: 1024px) {
+    font-size: 1.9rem;
+    line-height: 1.15;
+  }
 `
 
 export const PostDescription = styled.p`
-  font-size: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
   font-weight: 400;
-  padding: 0 5rem;
   color: var(--texts);
+  line-height: 1.5;
   margin-top: 0.5rem;
 
-  ${media.lessThan("large")`
-    font-size: 1.25rem;
-    line-height: 1.4;
-    padding: 0 1rem;
-  `}
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
 `
 
 export const PostDate = styled.p`
-  font-size: 1.1rem;
-  font-weight: 100;
-  padding: 0 5rem;
-  margin-top: 1rem;
-
-  ${media.lessThan("large")`
-    padding: 0 1rem;
-  `}
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.02em;
 `
 
 export const MainContent = styled.section`
-  margin: auto;
-  max-width: 70rem;
-  padding: 2rem 5rem;
-
-  ${media.lessThan("large")`
-    padding: 2rem 0;
-    max-width: 100%;
-  `}
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--texts);
 
   p,
   h1,
@@ -72,21 +75,19 @@ export const MainContent = styled.section`
   .tags,
   iframe,
   .button-post {
-    color: var(--postColor);
-    font-size: 1.25rem;
-    font-weight: 300;
+    color: var(--texts);
+    font-size: 1.125rem;
+    font-weight: 400;
     line-height: 1.7;
     letter-spacing: 0.01rem;
-    padding: 0 1.4rem;
 
     ${media.lessThan("large")`
-      padding: 0 1rem;
       word-break: break-word;
     `}
   }
 
   p {
-    margin: 0 auto 1.6rem;
+    margin: 0 0 1.6rem;
   }
 
   h1,
@@ -94,14 +95,14 @@ export const MainContent = styled.section`
   h3,
   h4,
   h5 {
-    margin: 2.4rem auto 1rem;
+    margin: 2.4rem 0 1rem;
   }
 
   ul,
   ol {
     list-style: disc;
     padding-left: 2.5rem;
-    margin: 0 auto 1.6rem;
+    margin: 0 0 1.6rem;
   }
 
   li {
@@ -125,24 +126,20 @@ export const MainContent = styled.section`
   }
 
   iframe {
-    padding: 0 1.6rem 1.6rem;
     width: 100%;
-
-    ${media.lessThan("large")`
-      padding: 0 1rem;
-    `}
+    margin: 1.5rem 0;
   }
 
   blockquote {
-    color: var(--postColor);
-    border-left: 0.3rem solid var(--highlight);
-    padding: 0 1.875rem;
-    margin: 3.125rem auto;
+    color: var(--texts);
+    border-left: 3px solid var(--highlight);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
   }
 
   hr {
     border: 1px solid var(--borders);
-    margin: 3rem auto;
+    margin: 3rem 0;
   }
 
   #twitter-widget-0,
@@ -156,9 +153,11 @@ export const MainContent = styled.section`
   h3,
   h4,
   h5 {
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-weight: 600;
     letter-spacing: 0.01rem;
     line-height: 1.3;
+    color: var(--postColor);
   }
 
   h1 {
@@ -170,18 +169,18 @@ export const MainContent = styled.section`
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 
     ${media.lessThan("large")`
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     `}
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 
     ${media.lessThan("large")`
-      font-size: 1.25rem;
+      font-size: 1.3rem;
     `}
   }
 
@@ -216,12 +215,17 @@ export const MainContent = styled.section`
     }
   }
 
-  .gatsby-highlight {
-    padding: 0 1.6rem 1.6rem;
+  .gatsby-highlight,
+  pre[class*="language-"] {
+    background: var(--code-bg);
+    border: 1px solid var(--borders);
+    border-radius: 8px;
+    overflow-x: auto;
+  }
 
-    ${media.lessThan("large")`
-      padding: 0;
-    `}
+  pre[class*="language-"] {
+    margin: 0;
+    padding: 1rem 1.25rem;
   }
 
   .instagram-media {
@@ -229,10 +233,10 @@ export const MainContent = styled.section`
   }
 
   a {
-    border-bottom: 1px dashed var(--highlight);
     color: var(--highlight);
-    text-decoration: none;
-    transition: opacity 0.5s;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s;
 
     svg {
       color: var(--postColor);

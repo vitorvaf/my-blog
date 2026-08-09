@@ -14,10 +14,10 @@ export const LayoutWrapper = styled.section`
 export const LayoutMain = styled.main`
   background: var(--background);
   flex: 1;
-  padding: 5rem 4rem 2rem 4rem;
-  transition: background 0.3s, color 0.3s;
+  min-height: calc(100vh - 120px);
+  padding: 3rem 2rem 2rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 
   body#grid & {
@@ -27,6 +27,6 @@ export const LayoutMain = styled.main`
   }
 
   ${media.lessThan("large")`
-    padding: 5rem 1.5rem 4rem 1.5rem;
+    padding: 2rem 1.25rem 3rem;
   `}
 `

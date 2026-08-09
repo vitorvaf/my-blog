@@ -72,3 +72,7 @@ yarn-error.log
 .kanbots/
 .rtk/
 CLAUDE.md
+
+# Dev/validation artifacts
+.playwright-mcp/
+current-home-desktop.png

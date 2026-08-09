@@ -1,21 +1,5 @@
 require("dotenv").config()
 
-const queries = require("./src/utils/algollia_queries")
-
-const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID
-const algoliaAdminKey = process.env.ALGOLIA_ADMIN_KEY
-const algoliaIndexName = process.env.GATSBY_ALGOLIA_INDEX_NAME
-
-// Warn (don't crash) when Algolia build-time credentials are missing. The plugin
-// is configured with `continueOnFailure: true` below, so without these the
-// search index is silently skipped — this surfaces the root cause up front.
-// See `.env.example` and the README for setup instructions.
-if (!algoliaAppId || !algoliaAdminKey || !algoliaIndexName) {
-  console.warn(
-    "[gatsby-config] Algolia env vars (GATSBY_ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, GATSBY_ALGOLIA_INDEX_NAME) are missing. Search indexing will be skipped for this build. Copy .env.example to .env and fill in values from https://www.algolia.com/account/api-keys/ — see README.md for details."
-  )
-}
-
 module.exports = {
   siteMetadata: {
     title: `Vitor Abreu`,
@@ -78,17 +62,6 @@ module.exports = {
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: algoliaAppId,
-        apiKey: algoliaAdminKey,
-        indexName: algoliaIndexName, // for all queries
-        queries,
-        chunkSize: 10000,
-        continueOnFailure: true, // don't fail the build when Algolia creds/indexing are unavailable
-      },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
