@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title, image }) {
+function SEO({ description, lang, meta, title, image, date, location }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,18 +26,66 @@ function SEO({ description, lang, meta, title, image }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const pageTitle = title || site.siteMetadata.title || ""
+  const metaDescription = description || site.siteMetadata.description || ""
 
-  const url = site.siteMetadata.siteUrl.replace(/\/$/, "")
+  const siteUrl = (site.siteMetadata.siteUrl || "").replace(/\/$/, "")
+  const pathname = location && location.pathname ? location.pathname : "/"
+  const url = `${siteUrl}${pathname}`
   const imagePath = (image || "/assets/img/cover.png").replace(/^\//, "")
-  const ogImage = `${url}/${imagePath}`
+  const ogImage = `${siteUrl}/${imagePath}`
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: pageTitle,
+    description: metaDescription,
+    author: {
+      "@type": "Person",
+      name: "Vitor Abreu",
+    },
+    image: ogImage,
+    publisher: {
+      "@type": "Person",
+      name: "Vitor Abreu",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  }
+
+  if (date) {
+    articleSchema.datePublished = date
+  }
+
+  const structuredData = [
+    articleSchema,
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `${siteUrl}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: pageTitle,
+          item: url,
+        },
+      ],
+    },
+  ]
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={pageTitle}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
@@ -46,7 +94,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           property: `og:description`,
@@ -74,14 +122,22 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           name: `twitter:description`,
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+      script={[
+        {
+          type: `application/ld+json`,
+          innerHTML: JSON.stringify(structuredData),
+        },
+      ]}
+    >
+      <link rel="canonical" href={url} />
+    </Helmet>
   )
 }
 
@@ -96,6 +152,11 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  date: PropTypes.string,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }),
 }
 
 export default SEO

@@ -76,7 +76,39 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMarkdownRemark.edges
 
-  posts.forEach(({ node, next, previous }) => {
+  posts.forEach(({ node }) => {
+    const currentIndex = posts.findIndex(
+      ({ node: candidate }) => candidate.fields.slug === node.fields.slug
+    )
+    const sameCategory = posts.filter(
+      ({ node: candidate }) =>
+        candidate.fields.slug !== node.fields.slug &&
+        candidate.frontmatter.category === node.frontmatter.category
+    )
+    const relatedCandidates =
+      sameCategory.length >= 2
+        ? sameCategory
+        : posts.filter(
+            ({ node: candidate }) => candidate.fields.slug !== node.fields.slug
+          )
+    const relatedPosts = relatedCandidates
+      .sort(
+        ({ node: first }, { node: second }) =>
+          Math.abs(
+            posts.findIndex(({ node: candidate }) => candidate === first) -
+              currentIndex
+          ) -
+          Math.abs(
+            posts.findIndex(({ node: candidate }) => candidate === second) -
+              currentIndex
+          )
+      )
+      .slice(0, 2)
+      .map(({ node: relatedNode }) => ({
+        frontmatter: { title: relatedNode.frontmatter.title },
+        fields: { slug: relatedNode.fields.slug },
+      }))
+
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/templates/blog-post.js`),
@@ -84,8 +116,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
-        previousPost: next,
-        nextPost: previous,
+        previousPost: relatedPosts[0],
+        nextPost: relatedPosts[1],
       },
     })
   })

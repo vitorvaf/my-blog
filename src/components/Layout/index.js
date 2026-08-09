@@ -7,8 +7,9 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import Sidebar from "../Sidebar"
-import MenuBar from "../MenuBar"
+import Header from "../Header"
+import SearchPalette from "../SearchPalette"
+import SkipToContent from "../SkipToContent"
 import Footer from "../Footer"
 
 import * as S from "./styled"
@@ -18,10 +19,11 @@ const Layout = ({ children }) => {
   return (
     <S.LayoutWrapper>
       <GlobalStyles />
-      <Sidebar />
+      <SkipToContent />
+      <Header />
+      <SearchPalette />
       <S.LayoutMain id="main-content">{children}</S.LayoutMain>
       <Footer />
-      <MenuBar />
     </S.LayoutWrapper>
   )
 }

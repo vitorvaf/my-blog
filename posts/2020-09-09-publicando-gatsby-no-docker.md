@@ -4,17 +4,18 @@ description: Passo a passo para publicar uma aplicação gatsby em um container
   utilizando o apache
 date: 2020-09-09T11:06:36.000Z
 image: assets/img/gatsby_docker.png
-category: dev
+category: "DevOps"
 background: "#637a91"
 ---
+
 O Gatsby é um framework moderno para construção de sites e aplicações web, e o Docker é uma plataforma de contêineres que facilita a implantação de aplicações em qualquer ambiente. Neste guia, vamos aprender como publicar uma aplicação Gatsby no Docker.
 
 ## Pré-requisitos
 
-* Conhecimento básico de Gatsby e React.
-* Conhecimento básico de Docker.
-* Ter o Docker instalado em sua máquina.
-* Uma aplicação Gatsby pronta para ser publicada.
+- Conhecimento básico de Gatsby e React.
+- Conhecimento básico de Docker.
+- Ter o Docker instalado em sua máquina.
+- Uma aplicação Gatsby pronta para ser publicada.
 
 ## Passo 1: Preparando a Aplicação Gatsby
 

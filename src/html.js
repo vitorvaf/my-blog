@@ -24,8 +24,12 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{
             __html: `
             (function() {
+              var themes = ['dark', 'light'];
               window.__onThemeChange = function() {};
               function setTheme(newTheme) {
+                if (themes.indexOf(newTheme) === -1) {
+                  newTheme = 'light';
+                }
                 window.__theme = newTheme;
                 preferredTheme = newTheme;
                 document.body.className = newTheme;
@@ -35,13 +39,18 @@ export default function HTML(props) {
               try {
                 preferredTheme = localStorage.getItem('theme');
               } catch (err) { }
+              if (themes.indexOf(preferredTheme) === -1) {
+                preferredTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+              }
               window.__setPreferredTheme = function(newTheme) {
                 setTheme(newTheme);
                 try {
                   localStorage.setItem('theme', newTheme);
                 } catch (err) {}
               }
-              setTheme(preferredTheme || 'dark');
+              setTheme(preferredTheme);
 
               window.__onDisplayChange = function() {};
               function setDisplay(newDisplay) {
