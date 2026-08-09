@@ -4,30 +4,36 @@ import media from "styled-media-query"
 import { Link } from "gatsby"
 
 export const RecommendedWrapper = styled.section`
-  border-bottom: 1px solid var(--borders);
+  width: 100%;
+  padding: 0;
+  padding-top: 2rem;
+  margin-top: 3rem;
   border-top: 1px solid var(--borders);
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding: 2rem 5rem;
+  border-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 
   ${media.lessThan("large")`
+    margin-top: 2.5rem;
     gap: 1rem;
-    padding: 2rem 1rem;
   `}
 `
 
 export const RecommendedHeading = styled.h2`
-  color: var(--postColor);
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 1.5rem;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem 0;
 `
 
 export const RecommendedLink = styled(Link)`
   align-items: flex-start;
   background: transparent;
-  color: var(--highlight);
+  color: var(--postColor);
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -35,22 +41,20 @@ export const RecommendedLink = styled(Link)`
   transition: opacity 0.2s;
 
   &:hover {
-    opacity: 0.8;
-  }
-
-  &.next {
-    align-items: flex-end;
-    text-align: right;
+    opacity: 0.7;
   }
 `
 
 export const RecommendedTitle = styled.span`
+  font-family: var(--font-body);
   font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--postColor);
 `
 
 export const RecommendedMeta = styled.span`
   color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  margin-top: 0.25rem;
 `

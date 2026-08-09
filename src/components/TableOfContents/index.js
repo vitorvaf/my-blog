@@ -7,7 +7,7 @@ const TableOfContents = () => {
 
   useEffect(() => {
     // Só executa no browser
-    if (typeof window === 'undefined') return
+    if (typeof window === "undefined") return
 
     // Extrai headings do conteúdo
     const article = document.querySelector(".post-content")
@@ -19,7 +19,7 @@ const TableOfContents = () => {
       if (!heading.id) {
         heading.id = `heading-${index}`
       }
-      
+
       return {
         id: heading.id,
         text: heading.textContent,
@@ -31,8 +31,8 @@ const TableOfContents = () => {
 
     // Observer para marcar heading ativo
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id)
           }
@@ -41,7 +41,7 @@ const TableOfContents = () => {
       { rootMargin: "-20% 0px -80% 0px" }
     )
 
-    headingElements.forEach((heading) => observer.observe(heading))
+    headingElements.forEach(heading => observer.observe(heading))
 
     return () => observer.disconnect()
   }, [])
@@ -49,15 +49,15 @@ const TableOfContents = () => {
   if (headings.length === 0) return null
 
   return (
-    <S.TOCWrapper>
+    <S.TOCWrapper aria-label="Neste artigo">
       <S.TOCTitle>Neste artigo</S.TOCTitle>
       <S.TOCList>
-        {headings.map((heading) => (
+        {headings.map(heading => (
           <S.TOCItem key={heading.id} level={heading.level}>
             <S.TOCLink
               href={`#${heading.id}`}
               isActive={activeId === heading.id}
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault()
                 const element = document.getElementById(heading.id)
                 if (element) {

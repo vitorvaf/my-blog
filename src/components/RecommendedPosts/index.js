@@ -13,13 +13,13 @@ const RecommendedPosts = ({ next, previous }) => (
   <S.RecommendedWrapper>
     <S.RecommendedHeading>Related writing</S.RecommendedHeading>
     {previous && (
-      <S.RecommendedLink to={previous.fields.slug} className="previous">
+      <S.RecommendedLink to={previous.fields.slug}>
         <S.RecommendedTitle>{previous.frontmatter.title}</S.RecommendedTitle>
         <S.RecommendedMeta>{getPostMeta(previous)}</S.RecommendedMeta>
       </S.RecommendedLink>
     )}
     {next && (
-      <S.RecommendedLink to={next.fields.slug} className="next">
+      <S.RecommendedLink to={next.fields.slug}>
         <S.RecommendedTitle>{next.frontmatter.title}</S.RecommendedTitle>
         <S.RecommendedMeta>{getPostMeta(next)}</S.RecommendedMeta>
       </S.RecommendedLink>

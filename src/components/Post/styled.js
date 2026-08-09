@@ -1,16 +1,23 @@
 import styled from "styled-components"
 import media from "styled-media-query"
 
-export const PostHeader = styled.header`
-  color: var(--postColor);
-  margin: auto;
-  max-width: 70rem;
-  padding: 0;
+// Single reading column — controls the shared width and horizontal padding
+// for every article element (breadcrumb, header, body, code, related).
+export const Column = styled.div`
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 32px;
 
   ${media.lessThan("large")`
-    padding: 0;
-    max-width: 100%;
+    padding: 0 20px;
   `}
+`
+
+export const PostHeader = styled.header`
+  color: var(--postColor);
+  width: 100%;
+  margin: 0;
+  padding: 0;
 `
 
 export const PostTitle = styled.h1`
@@ -18,14 +25,12 @@ export const PostTitle = styled.h1`
   font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  padding: 0 5rem;
-  margin: 1rem auto;
+  margin: 1rem 0 0 0;
   line-height: 1.15;
 
   @media (max-width: 1024px) {
     font-size: 1.9rem;
     line-height: 1.15;
-    padding: 0 1rem;
   }
 `
 
@@ -33,7 +38,6 @@ export const PostDescription = styled.p`
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 400;
-  padding: 0 5rem;
   color: var(--texts);
   line-height: 1.5;
   margin-top: 0.5rem;
@@ -41,33 +45,25 @@ export const PostDescription = styled.p`
   @media (max-width: 1024px) {
     font-size: 1.1rem;
     line-height: 1.5;
-    padding: 0 1rem;
   }
 `
 
 export const PostDate = styled.p`
-  font-size: 1.1rem;
-  font-weight: 100;
-  padding: 0 5rem;
-  margin-top: 1rem;
-
-  ${media.lessThan("large")`
-    padding: 0 1rem;
-  `}
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.02em;
 `
 
 export const MainContent = styled.section`
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 2rem 5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   font-size: 1.125rem;
   line-height: 1.75;
   color: var(--texts);
-
-  ${media.lessThan("large")`
-    padding: 2rem 0;
-    max-width: 100%;
-  `}
 
   p,
   h1,
@@ -84,16 +80,14 @@ export const MainContent = styled.section`
     font-weight: 400;
     line-height: 1.7;
     letter-spacing: 0.01rem;
-    padding: 0 1.4rem;
 
     ${media.lessThan("large")`
-      padding: 0 1rem;
       word-break: break-word;
     `}
   }
 
   p {
-    margin: 0 auto 1.6rem;
+    margin: 0 0 1.6rem;
   }
 
   h1,
@@ -101,14 +95,14 @@ export const MainContent = styled.section`
   h3,
   h4,
   h5 {
-    margin: 2.4rem auto 1rem;
+    margin: 2.4rem 0 1rem;
   }
 
   ul,
   ol {
     list-style: disc;
     padding-left: 2.5rem;
-    margin: 0 auto 1.6rem;
+    margin: 0 0 1.6rem;
   }
 
   li {
@@ -132,12 +126,8 @@ export const MainContent = styled.section`
   }
 
   iframe {
-    padding: 0 1.6rem 1.6rem;
     width: 100%;
-
-    ${media.lessThan("large")`
-      padding: 0 1rem;
-    `}
+    margin: 1.5rem 0;
   }
 
   blockquote {
@@ -149,7 +139,7 @@ export const MainContent = styled.section`
 
   hr {
     border: 1px solid var(--borders);
-    margin: 3rem auto;
+    margin: 3rem 0;
   }
 
   #twitter-widget-0,
@@ -180,7 +170,6 @@ export const MainContent = styled.section`
 
   h2 {
     font-size: 1.6rem;
-    margin-top: 2rem;
 
     ${media.lessThan("large")`
       font-size: 1.6rem;
@@ -189,7 +178,6 @@ export const MainContent = styled.section`
 
   h3 {
     font-size: 1.3rem;
-    margin-top: 2rem;
 
     ${media.lessThan("large")`
       font-size: 1.3rem;
@@ -227,20 +215,17 @@ export const MainContent = styled.section`
     }
   }
 
-  .gatsby-highlight {
-    padding: 0 1.6rem 1.6rem;
-
-    ${media.lessThan("large")`
-      padding: 0;
-    `}
-  }
-
   .gatsby-highlight,
   pre[class*="language-"] {
     background: var(--code-bg);
     border: 1px solid var(--borders);
     border-radius: 8px;
     overflow-x: auto;
+  }
+
+  pre[class*="language-"] {
+    margin: 0;
+    padding: 1rem 1.25rem;
   }
 
   .instagram-media {

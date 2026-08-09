@@ -9,7 +9,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import Header from "../Header"
 import SearchPalette from "../SearchPalette"
-import SkipToContent from "../SkipToContent"
 import Footer from "../Footer"
 
 import * as S from "./styled"
@@ -19,7 +18,6 @@ const Layout = ({ children }) => {
   return (
     <S.LayoutWrapper>
       <GlobalStyles />
-      <SkipToContent />
       <Header />
       <SearchPalette />
       <S.LayoutMain id="main-content">{children}</S.LayoutMain>

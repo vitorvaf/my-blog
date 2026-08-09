@@ -5,7 +5,6 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import * as S from "../components/Post/styled"
 import RecommendedPosts from "../components/RecommendedPosts"
-import BackButton from "../components/BackButton"
 import Breadcrumbs from "../components/Breadcrumbs"
 import CodeCopyButton from "../components/CodeCopyButton"
 import TableOfContents from "../components/TableOfContents"
@@ -30,25 +29,28 @@ const BlogPost = ({ data, pageContext, location }) => {
         date={post.frontmatter.date}
         location={location}
       ></SEO>
-      <BackButton />
       <article data-pagefind-body>
-        <S.PostHeader>
-          <Breadcrumbs items={breadcrumbItems} />
-          <S.PostDate>
-            {post.frontmatter.date} • {post.timeToRead} min de leitura
-          </S.PostDate>
-          <S.PostTitle>{post.frontmatter.title}</S.PostTitle>
-          <S.PostDescription>{post.frontmatter.description}</S.PostDescription>
-        </S.PostHeader>
-        <S.MainContent>
-          <TableOfContents />
-          <div
-            className="post-content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          ></div>
-        </S.MainContent>
+        <S.Column>
+          <S.PostHeader>
+            <Breadcrumbs items={breadcrumbItems} />
+            <S.PostDate>
+              {post.frontmatter.date} • {post.timeToRead} min de leitura
+            </S.PostDate>
+            <S.PostTitle>{post.frontmatter.title}</S.PostTitle>
+            <S.PostDescription>
+              {post.frontmatter.description}
+            </S.PostDescription>
+          </S.PostHeader>
+          <S.MainContent>
+            <TableOfContents />
+            <div
+              className="post-content"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            ></div>
+          </S.MainContent>
+          <RecommendedPosts next={next} previous={previous} />
+        </S.Column>
       </article>
-      <RecommendedPosts next={next} previous={previous} />
     </Layout>
   )
 }
