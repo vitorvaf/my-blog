@@ -40,6 +40,40 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
+## 🔑 Environment variables
+
+Both `gatsby-config.js` and `src/components/Search` read Algolia credentials
+from environment variables. `gatsby-config.js` loads them from a local `.env`
+file via `dotenv`, so before running `gatsby develop` or `gatsby build` you
+need to create one:
+
+```shell
+cp .env.example .env
+# then edit .env and fill in the values from https://www.algolia.com/account/api-keys/
+```
+
+The required keys are documented in [`.env.example`](./.env.example):
+
+| Variable | Where it's used | Notes |
+| --- | --- | --- |
+| `GATSBY_ALGOLIA_APP_ID` | build + browser | Algolia application id (public). |
+| `ALGOLIA_ADMIN_KEY` | build | Admin API key — **secret**, used to push the index. |
+| `GATSBY_ALGOLIA_INDEX_NAME` | build + browser | Name of the Algolia index to read/write. |
+| `GATSBY_ALGOLIA_SEARCH_KEY` | browser | Search-only API key used by the Search component. |
+
+Real `.env*` files are gitignored; only `.env.example` is checked in. If any
+of the three build-time vars are missing, `gatsby-config.js` will log a
+warning at startup so you can spot misconfigured environments (including CI)
+early.
+
+## 🧪 Development scripts
+
+- `npm run develop` — start the Gatsby development server.
+- `npm run build` — produce a production build in `public/`.
+- `npm run serve` — serve the production build locally.
+- `npm run format` — run Prettier over the repo (writes fixes).
+- `npm run lint` — run ESLint over `src/**/*.{js,jsx,tsx}` and the `gatsby-*.js` config files. Uses `eslint-config-react-app` for React / hooks / jsx-a11y rules, with `eslint-config-prettier` disabling any stylistic rules that would conflict with `.prettierrc`.
+
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
@@ -82,6 +116,17 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 12. **`README.md`**: A text file containing useful reference information about your project.
 
+## 🧹 Code formatting & pre-commit hook
+
+This project uses [Prettier](https://prettier.io/) via a Git pre-commit hook powered by [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged).
+
+- The hook is installed automatically after `npm install` by the `prepare` script (`husky install`). No manual setup is required.
+- On every `git commit`, staged `*.{js,jsx,ts,tsx,json,md}` files are auto-formatted with `prettier --write` before the commit is created. Only staged files are touched, so unrelated commits stay fast.
+- You may see your staged files reformatted mid-commit — this is expected. The reformatted changes are added to the same commit automatically by lint-staged.
+- To format the entire repository on demand, run `npm run format`.
+
+If you ever need to bypass the hook (e.g. for a WIP commit), use `git commit --no-verify`.
+
 ## 🎓 Learning Gatsby
 
 Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
@@ -97,3 +142,32 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## 🧪 Testing
+
+Unit tests use [Jest](https://jestjs.io/) with `babel-preset-gatsby`, following the
+[official Gatsby unit-testing guide](https://www.gatsbyjs.com/docs/how-to/testing/unit-testing/).
+
+```shell
+npm test
+```
+
+Configuration lives in `jest.config.js`. Supporting files:
+
+- `jest-preprocess.js` — Babel transformer used by `babel-jest`.
+- `loadershim.js` — sets the `___loader` global Gatsby expects at runtime.
+- `__mocks__/file-mock.js` — stubs out static asset imports (images, fonts, media).
+- `__mocks__/gatsby.js` — mocks `graphql`, `Link`, `StaticQuery`, and `useStaticQuery`
+  so components that import from `gatsby` render in Jest's jsdom environment.
+
+### Adding a test
+
+Colocate tests next to the code they cover, in a `__tests__` folder, with a
+`.test.js` suffix:
+
+- Pure utilities: `src/utils/__tests__/<name>.test.js` — see
+  `src/utils/__tests__/getThemeColor.test.js` for the pattern.
+- Components: `src/components/<Name>/__tests__/<Name>.test.js` — see
+  `src/components/Breadcrumbs/__tests__/Breadcrumbs.test.js`. Use
+  `react-test-renderer` to render and walk the resulting tree; the `gatsby`
+  mock handles `Link` and GraphQL.

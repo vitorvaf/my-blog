@@ -28,8 +28,9 @@ function SEO({ description, lang, meta, title, image }) {
 
   const metaDescription = description || site.siteMetadata.description
 
-  const url = site.siteMetadata.siteUrl
-  const ogImage = `${url}${image || "/assets/img/cover.png"}`
+  const url = site.siteMetadata.siteUrl.replace(/\/$/, "")
+  const imagePath = (image || "/assets/img/cover.png").replace(/^\//, "")
+  const ogImage = `${url}/${imagePath}`
 
   return (
     <Helmet
@@ -52,7 +53,7 @@ function SEO({ description, lang, meta, title, image }) {
           content: metaDescription,
         },
         {
-          property: `og:type`,
+          property: `og:image`,
           content: ogImage,
         },
         {
@@ -65,7 +66,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `twitter:image:src`,
-          content: ogImage
+          content: ogImage,
         },
         {
           name: `twitter:creator`,
