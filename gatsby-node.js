@@ -106,3 +106,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 }
+
+// Serve the Sveltia CMS admin panel in `gatsby develop`.
+// In production builds, `static/admin/index.html` is served automatically as a
+// static asset, so this middleware only bridges the dev server. (The former
+// `gatsby-plugin-netlify-cms` used to register the /admin route for dev.)
+exports.onCreateDevServer = ({ app }) => {
+  const express = require("express")
+  app.use(
+    "/admin",
+    express.static(path.join(__dirname, "static", "admin"), {
+      index: "index.html",
+    })
+  )
+}
