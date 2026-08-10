@@ -246,4 +246,57 @@ export const MainContent = styled.section`
       opacity: 0.8;
     }
   }
+
+  .post-content table {
+    width: 100%;
+    margin: 0 0 1.6rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--borders);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    ${media.greaterThan("medium")`
+      display: table;
+      table-layout: auto;
+    `}
+  }
+
+  .post-content thead {
+    background: var(--postColor);
+  }
+
+  .post-content th {
+    text-align: left;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--borders);
+    color: var(--background);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+
+  .post-content td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--borders);
+    color: var(--texts);
+  }
+
+  .post-content tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .post-content tbody tr:nth-child(even) td {
+    background: color-mix(in srgb, var(--texts) 4%, transparent);
+  }
+
+  .post-content table a {
+    color: var(--highlight);
+  }
 `

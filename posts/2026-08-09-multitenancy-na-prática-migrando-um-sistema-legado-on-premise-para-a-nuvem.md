@@ -1,7 +1,7 @@
 ---
 title: "Multitenancy na Prática: Migrando um Sistema Legado On-Premise para a Nuvem"
 description: "Continuando nossa jornada sobre arquitetura multi-tenant, agora vamos analisar um caso real: um sistema on-premise em .NET Framework 4.6 que precisou ser repensado para virar uma solução SaaS em nuvem. Decisões, desafios e a realidade de quem está no meio desse caminho."
-date: 2026-08-09 06:27:00
+date: 2026-08-09 23:40:00
 image: /assets/img/multi-tenancy-architecture-system-design.webp
 category: Architecture
 background: "#7AAB13"
