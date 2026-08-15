@@ -1,7 +1,7 @@
 ---
 title: "Multitenancy na Prática: Migrando um Sistema Legado On-Premise para a Nuvem"
 description: "Continuando nossa jornada sobre arquitetura multi-tenant, agora vamos analisar um caso real: um sistema on-premise em .NET Framework 4.6 que precisou ser repensado para virar uma solução SaaS em nuvem. Decisões, desafios e a realidade de quem está no meio desse caminho."
-date: 2026-08-09 23:40:00
+date: 2026-08-09 11:40:00
 image: /assets/img/multi-tenancy-architecture-system-design.webp
 category: Architecture
 background: "#7AAB13"
@@ -63,7 +63,7 @@ Para este projeto, a decisão foi: **SQL Azure com um banco de dados por cliente
 As justificativas foram:
 
 - **Isolamento total de dados:** Cada cliente teria seu próprio banco no SQL Azure, sem risco de cruzamento de informações.
-- **Customização por cliente:** Como o sistema tinha years de customizações específicas (procedures diferentes, views adaptadas), o banco dedicado preservava essa flexibilidade.
+- **Customização por cliente:** Como o sistema anos de customizações específicas (procedures diferentes, views adaptadas), o banco dedicado preservava essa flexibilidade.
 - **Migração gradual:** Era possível migrar cliente por cliente, copiando a estrutura existente sem precisar redesenhar tudo de uma vez.
 - **Segurança percebida:** Para os clientes (especialmente os maiores), o argumento de "meu banco é só meu" pesava a favor comercialmente.
 
@@ -124,7 +124,7 @@ Há uma tensão arquitetural interessante aqui. Se cada cliente tem seu próprio
 
 **4. Migração gradual, e não Big Bang**
 
-Não é viável reescrever 70% das regras de uma vez. O sistema precisa continuar funcionando enquanto a migração acontece. Isso significa que, por um longo período, **o novo e o velde coexistem**:
+Não é viável reescrever 70% das regras de uma vez. O sistema precisa continuar funcionando enquanto a migração acontece. Isso significa que, por um longo período, **o novo e o velho coexistem**:
 
 - As regras ainda não migradas continuam sendo executadas pelas procedures no banco
 - As regras já migradas rodam no novo Core
@@ -157,6 +157,54 @@ A decisão de migrar um sistema legado on-premise para uma arquitetura multi-ten
 - **Banco por cliente** resolve o isolamento, mas adiciona complexidade no roteamento dinâmico de conexões — algo que precisa ser projetado com cuidado desde o início.
 
 No próximo artigo, vamos nos aprofundar em como o microsserviço **Core** foi estruturado para lidar com a migração dessas regras de negócio: desde o roteamento dinâmico de bancos até os padrões de código utilizados para traduzir procedures SQL em serviços modernos.
+
+---
+
+## Referências
+
+### Estratégia de Migração & Modernização
+
+1. **Microsoft — Cloud Adoption Framework (CAF)**
+   Microsoft Learn, 2024.
+   https://learn.microsoft.com/azure/cloud-adoption-framework/
+2. **Microsoft — Azure Migration and Modernization Center**
+   _Guia sobre Rehost, Refactor, Replatform, Re-architect (6Rs)._
+   https://learn.microsoft.com/azure/migrate/
+3. **Richardson, Chris — Microservices Patterns**
+   Manning Publications, 2019.
+
+### Padrões de Migração Gradual (Strangler Fig)
+
+4. **Fowler, Martin — "StranglerFigApplication"**
+   Martin Fowler's Blog, 2004.
+   https://martinfowler.com/bliki/StranglerFigApplication.html
+5. **Newman, Sam — Building Microservices, 2nd Edition**
+   O'Reilly Media, 2021.
+
+### Migração .NET (WebForms → Core)
+
+6. **Microsoft — "Migrate from ASP.NET to ASP.NET Core"**
+   Microsoft Learn, 2024.
+   https://learn.microsoft.com/aspnet/core/migration/proper-to-2x/
+7. **Microsoft — ".NET Portability Analyzer"**
+   https://learn.microsoft.com/dotnet/standard/analyzers/portability-analyzer
+
+### Banco de Dados & SQL Azure
+
+8. **Microsoft — "SQL Database — Database Migration Guide"**
+   Microsoft Learn, 2024.
+   https://learn.microsoft.com/azure/azure-sql/database/migration-guidance
+9. **Microsoft — "Azure SQL Database: Multi-tenant SaaS patterns"**
+   https://learn.microsoft.com/azure/architecture/guide/multitenant/considerations/sql-database
+
+### Arquitetura & Decisões de Design
+
+10. **Richards, Mark & Ford, Neal — Fundamentals of Software Architecture**
+    O'Reilly Media, 2020.
+11. **Ford, Neal et al. — Software Architecture: The Hard Parts**
+    O'Reilly Media, 2021.
+12. **Evans, Eric — Domain-Driven Design**
+    Addison-Wesley, 2003.
 
 ---
 
