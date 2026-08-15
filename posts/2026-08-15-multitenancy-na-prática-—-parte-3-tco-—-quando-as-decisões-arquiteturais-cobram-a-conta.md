@@ -1,7 +1,7 @@
 ---
 title: "Multitenancy na Prática — Parte 3: TCO — Quando as Decisões Arquiteturais Cobram a Conta"
-description: "Exercício de TCO real: a equipe saiu no meio da migração, cada cliente virou uma VM + um banco Azure SQL e 70% da regra de negócio segue presa em procedures."
-date: 2026-08-14 09:05:00
+description: "Exercício de TCO real: troca da equipe no meio da migração, cada cliente virou um site IIS numa VM compartilhada + um banco Azure SQL dedicado, e 70% da regra de negócio segue presa em procedures."
+date: 2026-08-15 04:48:00
 image: /assets/img/multi-tenancy-architecture-system-design.webp
 category: Architecture
 background: "#637a91"
@@ -126,7 +126,6 @@ Como cada cliente tem banco próprio, a conta multiplica:
 
 ```plain
 Custo mensal de banco ≈ N clientes × tier dimensionado para o pior workload de cada um
-
 ```
 
 Se UMA procedure de fechamento exige 8 vCores para não dar timeout, **todos** os clientes que rodam aquele módulo precisam desse tier, provisionado 24/7, mesmo que o workload normal seja de 1 vCore.
@@ -161,7 +160,6 @@ vCores do pool = MAX(
     total de bancos × utilização média por banco,
     bancos que picam simultaneamente × pico por banco
 )
-
 ```
 
 Repare no segundo termo. **Se os picos são correlacionados, o pool não economiza nada.** E num ERP eles são: fechamento mensal, apuração fiscal, prazos de SPED, folha — todos os clientes rodam o mesmo processo pesado nos mesmos dias do mês. O padrão que o Elastic Pool ama (picos raros e defasados) é justamente o que um ERP fiscal **não** tem.
@@ -239,7 +237,6 @@ Custo(tenant) = custo_banco(tenant)
               + custo_backup(tenant)
               + (custo_VM + custo_serviços_compartilhados) × rateio(tenant)
               + custo_equipe / N
-
 ```
 
 Com isso na mão, duas perguntas ficam respondíveis — e são as que a diretoria faz:
