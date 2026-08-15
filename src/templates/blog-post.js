@@ -30,26 +30,31 @@ const BlogPost = ({ data, pageContext, location }) => {
         location={location}
       ></SEO>
       <article data-pagefind-body>
-        <S.Column>
-          <S.PostHeader>
-            <Breadcrumbs items={breadcrumbItems} />
-            <S.PostDate>
-              {post.frontmatter.date} • {post.timeToRead} min de leitura
-            </S.PostDate>
-            <S.PostTitle>{post.frontmatter.title}</S.PostTitle>
-            <S.PostDescription>
-              {post.frontmatter.description}
-            </S.PostDescription>
-          </S.PostHeader>
-          <S.MainContent>
-            <TableOfContents />
-            <div
-              className="post-content"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-            ></div>
-          </S.MainContent>
-          <RecommendedPosts next={next} previous={previous} />
-        </S.Column>
+        <S.LayoutGrid>
+          <S.TOCSidebar>
+            <TableOfContents variant="desktop" />
+          </S.TOCSidebar>
+          <S.ArticleColumn>
+            <S.PostHeader>
+              <Breadcrumbs items={breadcrumbItems} />
+              <S.PostDate>
+                {post.frontmatter.date} • {post.timeToRead} min de leitura
+              </S.PostDate>
+              <S.PostTitle>{post.frontmatter.title}</S.PostTitle>
+              <S.PostDescription>
+                {post.frontmatter.description}
+              </S.PostDescription>
+            </S.PostHeader>
+            <S.MainContent>
+              <TableOfContents variant="mobile" />
+              <div
+                className="post-content"
+                dangerouslySetInnerHTML={{ __html: post.html }}
+              ></div>
+            </S.MainContent>
+            <RecommendedPosts next={next} previous={previous} />
+          </S.ArticleColumn>
+        </S.LayoutGrid>
       </article>
     </Layout>
   )

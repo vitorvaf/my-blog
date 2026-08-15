@@ -3,7 +3,7 @@ title: "Ofuscação de código em Projetos .NET com JavaScript Obfuscator "
 description: Este artigo explora a integração eficaz da ofuscação de código
   JavaScript em projetos .NET Core.
 date: 2023-11-07T08:44:51.000Z
-image: assets/img/javascript-obfuscator.webp
+image: /assets/img/javascript-obfuscator.webp
 category: "Security"
 background: "#637a91"
 ---

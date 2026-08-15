@@ -2,7 +2,7 @@
 title: "Engenharia de Prompt para Desenvolvedores de Software: Arquiteturas de Instrução no Software 3.0"
 description: Fundamentos, Técnicas Avançadas e Aplicações Práticas no Desenvolvimento de Software Orientado por LLMs
 date: 2026-01-27 07:43:09
-image: assets/img/javascript-obfuscator.webp
+image: /assets/img/javascript-obfuscator.webp
 category: "AI Engineering"
 background: "#637a91"
 ---

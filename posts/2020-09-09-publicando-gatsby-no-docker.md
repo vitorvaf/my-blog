@@ -3,7 +3,7 @@ title: Publicando gatsby no docker
 description: Passo a passo para publicar uma aplicação gatsby em um container
   utilizando o apache
 date: 2020-09-09T11:06:36.000Z
-image: assets/img/gatsby_docker.png
+image: /assets/img/gatsby_docker.png
 category: "DevOps"
 background: "#637a91"
 ---

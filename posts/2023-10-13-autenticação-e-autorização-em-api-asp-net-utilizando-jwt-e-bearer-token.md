@@ -3,7 +3,7 @@ title: Autenticação e autorização em Api ASP.NET utilizando JWT e Bearer Tok
 description: Principais conceitos de segurança e autenticação aplicados em uma
   api desenvolvida em .Net Core.
 date: 2023-10-13 11:15:56
-image: assets/img/images.jpeg
+image: /assets/img/images.jpeg
 category: ".NET"
 background: "#637a91"
 ---
