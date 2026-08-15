@@ -4,6 +4,22 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // You can delete this file if you're not using it
 // To add the slug field to each post
+
+// `frontmatter.image` holds site-relative paths like `/assets/img/cover.webp`.
+// Because `static/assets/img` is also a gatsby-source-filesystem source (and
+// gatsby-remark-relative-images rewrites the relative variants), inference
+// would type the field as `File`, breaking every query/consumer that treats
+// it as a plain string (PostList below, the post page query and SEO).
+// Pinning it to String keeps the raw path value.
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type MarkdownRemarkFrontmatter {
+      image: String
+    }
+  `)
+}
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   // Ensures we are processing only markdown files

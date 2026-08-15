@@ -1,15 +1,52 @@
 import styled from "styled-components"
 import media from "styled-media-query"
 
-// Single reading column — controls the shared width and horizontal padding
-// for every article element (breadcrumb, header, body, code, related).
-export const Column = styled.div`
+// Desktop two-column wrapper. When a non-empty <aside> (the TOC sidebar) is
+// present, it switches to a 2-column grid that comfortably hosts a sticky
+// TOC on the left and the article column on the right. When no aside is
+// present (e.g. articles without h2/h3), the grid collapses to a single
+// column so we never leave an empty sidebar taking up space.
+export const LayoutGrid = styled.div`
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 20px;
 
-  ${media.lessThan("large")`
-    padding: 0 20px;
+  ${media.greaterThan("large")`
+    max-width: 1200px;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+    align-items: start;
+    gap: 3.5rem;
+
+    &:has(> aside:not(:empty)) {
+      grid-template-columns: 240px minmax(0, 680px);
+    }
+  `}
+`
+
+// Right-hand reading column that owns PostHeader, MainContent, and
+// RecommendedPosts. Keeps the original 680px reading measure.
+export const ArticleColumn = styled.div`
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`
+
+// Sticky aside that holds the TableOfContents on desktop. Hidden on mobile
+// (the TOC reappears inline above the article content as a disclosure).
+export const TOCSidebar = styled.aside`
+  display: none;
+
+  ${media.greaterThan("large")`
+    display: block;
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+    max-height: calc(100vh - 6rem);
   `}
 `
 
@@ -96,6 +133,9 @@ export const MainContent = styled.section`
   h4,
   h5 {
     margin: 2.4rem 0 1rem;
+    /* Keep headings visible when scrolled to via TOC click — clears the
+       sticky header (~64px ≈ 4rem) plus a touch of breathing room. */
+    scroll-margin-top: 5rem;
   }
 
   ul,
